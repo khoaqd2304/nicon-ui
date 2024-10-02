@@ -1,0 +1,109 @@
+﻿@model FooterModel
+@using Nop.Core
+@using Nop.Core.Domain.Tax
+@using Nop.Core.Infrastructure
+@using Nop.Web.Models.Common;
+<footer id="footer" class="clearfix" role="contentinfo">
+    <div class="region region-footer">
+        <div class="region-inner clearfix">
+            <div class="footer-container">
+                <div id="block-block-1" class="block block-block no-title odd first last block-count-1 block-region-footer block-1">
+                    <div class="block-inner clearfix">
+                        <div class="block-content content">
+                            <p>
+                                <a class="logo-footer" href="/" title="Home">
+                                    <img class="image-style-none" src="~/Themes/Nicon/Content/images/logo.png" alt="Bouygues Construction">
+                                </a>
+                            </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div id="block-menu-menu-menu-footer" class="block block-menu no-title even block-count-2 block-region-footer block-menu-menu-footer" role="navigation">
+                    <div class="block-inner clearfix">
+                        <div class="block-content content">
+                            <ul class="menu menu-footer clearfix">
+                                <li class="first leaf color-default menu-depth-1 menu-item-686"><a href="/">@T("homepage")</a></li>
+                                <li class="leaf color-default menu-depth-1 menu-item-1840"><a href="@Url.RouteUrl("Introduction")">@T("Introduce")</a></li>
+                                <li class="leaf color-default menu-depth-1 menu-item-689"><a href="@Url.RouteUrl("Sitemap")" title="">Site map</a></li>
+                                <li class="leaf color-default menu-depth-1 menu-item-685"><a href="@Url.RouteUrl("Recruitment")">@T("Recruitment")</a></li>
+                                <li class="leaf color-default menu-depth-1 menu-item-685"><a href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a></li>
+                                <li class="leaf color-default menu-depth-1 menu-item-685 view-visitor"><a>Views  : @(Model.VisitorLog)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script type="text/javascript">
+    expireDate = new Date
+    expireDate.setMonth(expireDate.getMonth() + 6)
+    jcount = eval(cookieVal("jaafarCounter"))
+    jcount++
+    document.cookie = "jaafarCounter=" + jcount + ";expires=" + expireDate.toGMTString()
+
+    function cookieVal(cookieName) {
+        thisCookie = document.cookie.split("; ")
+        for (i = 0; i < thisCookie.length; i++) {
+            if (cookieName == thisCookie[i].split("=")[0]) {
+                return thisCookie[i].split("=")[1]
+            }
+        }
+        return 0
+    }
+    function page_counter() {
+        for (i = 0; i < (7 - jcount.toString().length); i++)
+            document.write('<span class="counter">0</span>')
+        for (y = 0; y < (jcount.toString().length); y++)
+            document.write('<span class="counter">' + jcount.toString().charAt(y) + '</span>')
+    }
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.footer-block .title').click(function () {
+            var e = window, a = 'inner';
+            if (!('innerWidth' in window)) {
+                a = 'client';
+                e = document.documentElement || document.body;
+            }
+            var result = { width: e[a + 'Width'], height: e[a + 'Height'] };
+            if (result.width < 769) {
+                $(this).siblings('.list').slideToggle('slow');
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.block .title').click(function () {
+            var e = window, a = 'inner';
+            if (!('innerWidth' in window)) {
+                a = 'client';
+                e = document.documentElement || document.body;
+            }
+            var result = { width: e[a + 'Width'], height: e[a + 'Height'] };
+            if (result.width < 1001) {
+                $(this).siblings('.listbox').slideToggle('slow');
+            }
+        });
+    });
+</script>

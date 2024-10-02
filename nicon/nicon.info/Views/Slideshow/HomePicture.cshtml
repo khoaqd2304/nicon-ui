@@ -1,0 +1,131 @@
+﻿@model IList<Nop.Web.Models.Slideshow.SlideshowModel>
+@if (Model != null && Model.Count() > 0)
+{
+    if (ViewBag.Positionpicture == 0)
+    {
+	
+
+
+        <div id="home-slides" class="flexslider">
+            <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                <ul class="slides" style="width: 1200%; transition-duration: 0s; transform: translate3d(-2658px, 0px, 0px);">
+                    @foreach (var item in Model)
+                    {
+                    <li style="width: 883px; float: left; display: block; transform: translateX(-3px);" class="">
+                        <img class="image-style-hp-carousel-slides" src="@item.UrlImage" width="848" height="430" alt="" draggable="false">
+                        <div class="pane-content white-text text-left">
+                            <div class="overshadow">
+							<!--update 08/10/20024: line height css--> 
+                                <h2 class="texte-noir-h2 custom-texte-noir-h2"  style="line-height: 25px !important">
+                                    @item.Title &nbsp;<span class="texte-orange-span">@item.Short</span>
+                                </h2>
+								<!--end update 08/10/20024 --> 
+                                <h4>&nbsp;</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+                    </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+    else if (ViewBag.Positionpicture == 2)
+    {
+
+        <div class="field field-name-field-bloc-doitac field-type-text-with-summary field-label-hidden view-mode-full">
+            <div class="field-items">
+                <div class="field-item even">
+                    <div class="career">
+                        <h2><strong>@T("mori.industry.group")</strong></h2>
+                        <p>@T("the.main.partner")</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="field field-name-field-bloc-doitac-right field-type-text-with-summary field-label-hidden view-mode-full">
+            <div class="field-items">
+                <div class="field-item even">
+                    <div class="image">
+                        <div class="field field-name-field-vignette-dd field-type-image field-label-hidden view-mode-full">
+                            <div class="field-items">
+                                <figure class="clearfix field-item even">
+                                    @foreach (var item in Model)
+                                    {
+                                        if (Model != null && Model.Count() > 1)
+                                        {
+                                            <img style="padding: 8px 10px 5px 10px; float: left;" class="image-style-logo-mori" src="@item.UrlImage" width="45%" height="140" alt="">
+                                        }
+                                        else
+                                        {
+                                            <img style="padding-top: 25px;display: block;" class="image-style-logo-mori" src="@item.UrlImage" width="58%" height="140" alt="">
+                                        }
+
+                                    }
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else if (ViewBag.Positionpicture == 1)
+    {
+        <div class="field field-name-field-bloc-dp-texte field-type-text-with-summary field-label-hidden view-mode-full">
+            <div class="field-items">
+                <div class="field-item even">
+                    <div class="image">
+                        <div class="field field-name-field-vignette-dd field-type-image field-label-hidden view-mode-full">
+                            <div class="field-items">
+                                <figure class="clearfix field-item even">
+                                    @foreach (var item in Model)
+                                    {
+                                        <img typeof="foaf:Image" class="image-style-445-210" src="@item.UrlImage" width="250" height="100" alt="">
+                                    }
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else if (ViewBag.Positionpicture == 3)
+    {
+        foreach (var item in Model)
+        {
+            <div class="field field-name-field-bloc-pr-sence-internationa field-type-text-with-summary field-label-hidden view-mode-full" style="background: url(@item.UrlImage) no-repeat; background-size:100%;background-size:cover">
+                <div class="field-items" style="height:100%;text-shadow: 0 1px 1px rgba(0, 0, 0, .4);margin:32px 16px 0">
+                    <div class="field-item even"  style="background-color:rgba(255,255,255,0.7); padding:16px 16px 0;max-width:700px;margin:0 auto">
+					
+					
+                        <h2 style="margin-top:0;margin-bottom:8px">@T("operations") <span>@T("worldwide")</span></h2>
+                        <p >@T("Our.300.employees")</p>
+                        <p><a class="mon-lien-plus" href="@Url.RouteUrl("CompanyPartnerOfMap")" >@T("out.project.and.locations")</a></p>
+                  
+					</div>
+                </div>
+            </div>
+        }
+    }
+}
+
+

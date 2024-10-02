@@ -1,0 +1,75 @@
+﻿@model IList<ServiceMEPContractorItemModel>
+@using Nop.Web.Models.Service;
+@{
+    Layout = "~/Views/Shared/_ColumnsTwo.cshtml";
+    Html.AppendPageCssClassParts("html-news-item-page");
+}
+@foreach (var item in Model)
+{
+    //title
+    Html.AddTitleParts(!String.IsNullOrEmpty(@item.MetaTitle) ? @item.MetaTitle : @item.Title);
+    //meta
+    Html.AddMetaDescriptionParts(@item.MetaDescription);
+    Html.AddMetaKeywordParts(@item.MetaKeywords);
+}
+<div id="breadcrumb" class="clearfix">
+    <nav class="breadcrumb-wrapper clearfix">
+        <ol id="crumbs" class="clearfix">
+            <li class="crumb crumb-first">
+                <a>@T("homepage")</a>
+            </li>
+            <li class="crumb">
+                <span> >> </span>
+                <span class="crumb-title">
+                    @T("home.menu.service.serviceMEPcontractor")
+                </span>
+            </li>
+
+        </ol>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+@if (Model != null && Model.Count() > 0)
+{
+    foreach (var item in Model)
+    {
+        <div class="page news-item-page">
+            <div class="page-title">
+                <h1>@item.Title</h1>
+            </div>
+            <div class="page-body">
+                @*<div class="news-date">
+                        @item.CreatedOn.ToString("D")
+                    </div>*@
+                <div class="news-body">
+                    @Html.Raw(item.Full)
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="page news-item-page class-blank">
+        <p>@T("No.Content")</p>
+    </div>
+}
+
+

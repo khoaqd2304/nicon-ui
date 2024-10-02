@@ -1,0 +1,71 @@
+﻿@{
+    Layout = "~/Views/Shared/_ColumnsTwo.cshtml";
+    Html.AppendPageCssClassParts("html-news-item-page");
+}
+<div id="breadcrumb" class="clearfix">
+    <nav class="breadcrumb-wrapper clearfix">
+        <ol id="crumbs" class="clearfix">
+            <li class="crumb crumb-first">
+                <a>@T("homepage")</a>
+            </li>
+            <li class="crumb">
+                <span> >> </span>
+                <span class="crumb-title">
+                    @T("presence.in.the.world")
+                </span>
+            </li>
+
+        </ol>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<br />  <div class="page news-item-page">
+    <div class="page-title">
+        <h1>  @T("presence.in.the.world")</h1>
+    </div>
+    <div class="page-body">
+
+        <div class="news-body">
+            <div id="map"></div>
+        </div>
+    </div>
+</div>
+<script>
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  var uluru = {lat: -25.344, lng: 131.036};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 4, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+}
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwxxpd-dLqGhVH4RDYUF6aZJFG1cLCqSA&callback=initMap">
+</script>
+<style>
+    #map {
+        width: 100%;
+        height: 400px;
+        background-color: grey;
+    }
+</style>

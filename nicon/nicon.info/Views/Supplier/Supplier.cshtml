@@ -1,0 +1,76 @@
+﻿@model IList<Nop.Web.Models.Supplier.SupplierModel>
+<div id="breadcrumb" class="clearfix">
+    <nav class="breadcrumb-wrapper clearfix">
+        <ol id="crumbs" class="clearfix">
+            <li class="crumb crumb-first">
+                <a> @T("homepage.home")</a>
+            </li>
+            <li class="crumb">
+                <span> >> </span>
+                <span class="crumb-title">
+                    @T("homepage.supplier")
+                </span>
+            </li>
+
+        </ol>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<div id="columns" class="columns clearfix">
+    <div id="content-column" class="content-column">
+        <div class="content-inner">
+            <div id="main-content">
+                <header id="main-content-header" class="clearfix">
+                    <h1 id="page-title">
+                        <span> @T("homepage.supplier")</span>
+                    </h1>
+                </header>
+                <div id="full-width">
+                    <div class="content-box">
+                        <div class="services-wrapper services-default cols-wrapper cols-4">
+                            @if (Model != null && Model.Count() > 0)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <div class="services-box col services-no-content">
+                                        <div class="img-container title-customerwork">
+                                            <a href="@item.LinkUrl"  target="_blank">
+                                                <img src="@item.UrlImage" alt="Image" style=" height: 175px; width: 212px;">
+                                                <h3>@item.Title</h3>
+                                                </a>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <div class="page news-item-page class-blank">
+                                    <p>@T("No.Content")</p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,33 @@
+﻿
+<h2>File Upload</h2>
+@model IEnumerable<Nop.Admin.Models.UploadedFile.UploadFileModel>
+
+<div class="content">
+    <div class="form-horizontal">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <label for="file">Available File:</label>
+                    <ul>
+                        @foreach (var file in Model)
+                        {
+                            var fileName = Path.GetFileName(file.Name);
+                           <li><a> @Html.ActionLink(fileName, "Download", new { img = fileName.ToString() })</a>  |  <a> @Html.ActionLink("Delete", "Delete", new { img = fileName.ToString() })</a></li>
+                        }
+                    </ul>
+                    <br />
+                    <br />
+                    @using (Html.BeginForm("Upload", "UploadFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <label for="file">Upload File:</label>
+                        <input type="file" name="file" id="file" /><br><br>
+                        <input type="submit" value="Upload File" />
+                        <br><br>
+                        @ViewBag.Message
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

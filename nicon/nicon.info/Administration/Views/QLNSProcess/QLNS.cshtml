@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Nop.Admin.Models.UploadedFile.UploadFileModel>
+<table>
+    <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Download</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var file in Model)
+        {
+            var fileName = Path.GetFileName(file.Name);
+            <tr>
+                <td>@fileName</td>
+                <td> <a> @Html.ActionLink("Download", "DownloadTC", new { fileName = (fileName).ToString(), folder = "QLNS" })</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,202 @@
+﻿<header id="header" class="clearfix" role="banner">
+    <div id="branding" class="branding-elements clearfix">
+        <div class="show-desktop">
+            <div class="region region-sidebar-first sidebar">
+                <div class="region-inner clearfix">
+                    <div id="block-bouygues-main-top-social-links" class="block block-bouygues-main no-title odd first block-count-3 block-region-sidebar-first block-top-social-links">
+                        <div class="block-inner clearfix">
+                            <div class="left-icon">
+                                <ul>
+                                    @Html.Action("Social", "Common")
+                                    <li class="loginUser"><a title="Login" href="@Url.RouteUrl("Login")"></a></li>
+                                    <li class="iconMOri"><a onclick="window.open('https://www.mori-group.jp')" target="_blank"></a></li>
+                                </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div name="countries" id="countries" style="width:180px;">
+                        @Html.Action("LanguageSelector", "Common", new { detectmobile = false })
+                    </div>
+
+                    <div id="block-menu-menu-main-menu-2" class="block block-menu no-title odd last block-count-5 block-region-sidebar-first block-menu-main-menu-2" role="navigation">
+                        <div class="block-inner clearfix">
+                            <div class="block-content content">
+                                <ul class="menu clearfix">
+                                    <li class="expanded color-default menu-depth-1 menu-item-1795">
+                                        <a>@T("homepage.services")</a><span class="menu_plus show-responsive"><a href="/en">menu plus</a></span>
+                                        <ul class="menu clearfix">
+                                            <li class="first leaf color-default menu-depth-2 menu-item-1797"><a href="@Url.RouteUrl("Service")">@T("homepage.services.designbuildcontractor")</a></li>
+                                            <li class="leaf color-default menu-depth-2 menu-item-1798"><a href="@Url.RouteUrl("ListMainContractor")">@T("homepage.services.maincontractor")</a></li>
+                                            <li class="leaf color-default menu-depth-2 menu-item-1799"><a href="@Url.RouteUrl("ListGeneralContractor")">@T("homepage.services.generalcontractor")</a></li>
+                                            <li class="leaf color-default menu-depth-2 menu-item-1799"><a href="@Url.RouteUrl("ListMEPContractor")">@T("homepage.services.mepcontractor")</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="expanded color-default menu-depth-1 menu-item-1795">
+                                        <a href="@Url.RouteUrl("News")">@T("homepage.news")</a>
+
+                                    </li>
+                                    <li class="last leaf color-default menu-depth-1 menu-item-1796">
+                                        <a href="@Url.RouteUrl("Supplier")">@T("homepage.suppliers")</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="logo">
+            <h1>
+                @Html.Action("Logo", "Common", new { area = "" })
+            </h1>
+        </div>
+        <div class="show-desktop">
+            <div class="region region-header">
+                <div class="region-inner clearfix">
+                    <div id="block-search-form" class="block block-search no-title odd first last block-count-7 block-region-header block-form" role="search">
+                        <div class="block-inner clearfix">
+                            <div class="block-content content">
+                                <form action="http://www.nicon.vn/en" method="post" id="search-block-form--2" accept-charset="UTF-8">
+                                    <div>
+                                        <div class="container-inline">
+                                            <div class="form-item form-type-textfield form-item-search-block-form">
+                                                @Html.Action("SearchBox", "Catalog")
+                                            </div>
+                                            <a href="http://www.nicon.vn/en" class="clear_search" style="display: none;">Clear</a>
+                                            <div class="form-actions form-wrapper" id="edit-actions--2">
+                                                <input type="submit" id="edit-submit--2" name="op" value="Search" class="form-submit">
+                                            </div>
+                                        </div>
+                                        @*<div class="search-box store-search-box">
+                                                @Html.Action("SearchBox", "Catalog")
+                                            </div>*@
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="show-responsive">
+            <div class="region region-header-responsive">
+                <div class="region-inner clearfix">
+                    <div id="block-locale-language--2" class="block block-locale no-title odd first last block-count-8 block-region-header-responsive block-language" role="complementary">
+                        <div class="block-inner clearfix">
+                            <div class="block-content content">
+                                <ul class="language-switcher-locale-url">
+                                    <li class="en first active"><a href="http://www.nicon.vn/en" class="language-link active" xml:lang="en" hreflang="en">EN</a></li>
+                                    <li class="fr last"><a href="http://www.nicon.vn/" class="language-link" xml:lang="fr" hreflang="fr">FR</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="show-responsive">
+            <div class="region region-sidebar-first-responsive sidebar">
+                <div class="region-inner clearfix">
+                    <div id="block-bouygues-main-block-menu-mobile" class="block block-bouygues-main no-title odd first last block-count-6 block-region-sidebar-first-responsive block-block-menu-mobile">
+                        <div class="block-inner clearfix">
+                            <div class="block-content content">
+                                <div class="mobile-menu">
+                                    <div class="top-menu-mobile">
+                                        <a class="open-mobile-menu" href="#">Open</a>
+
+                                    </div>
+                                    <div class="wrap_menu_links">
+                                        <div class="inner-wrap_menu_links">
+                                            <div class="lang-switch">
+                                                @Html.Action("LanguageSelector", "Common", new { detectmobile = true })
+                                            </div>
+                                            <div class="search_social">
+
+                                                <div class="bloc-mob-droite-1">
+                                                    <div class="inner-bloc-mob-droite-1">
+                                                        <a href="#" class="show_search">@T("home.search")</a>
+                                                        <a href="#" class="show_social">social links</a>
+                                                    </div>
+                                                </div>
+                                                <div class="wrap_social">
+                                                    <ul>
+                                                        <li class="Fb"><a href="" target="_blank"></a></li>
+                                                        <li class="Google"><a href="" target="_blank"></a></li>
+                                                        <li class="YouTube"><a href="" target="_blank"></a></li>
+                                                        <li class="loginUser"><a title="Login" href="@Url.RouteUrl("Login")"></a></li>
+                                                        <li class="iconMOri"><a onclick="window.open('http://www.mori-nicon.com/')" target="_blank"></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bloc-mob-droite-2">
+                                                    <form action="/" method="post" id="search-block-form" accept-charset="UTF-8">
+                                                        <div>
+                                                            <div class="container-inline">
+
+                                                                <div class="form-item form-type-textfield form-item-search-block-form">
+                                                                    <label class="element-invisible" for="edit-search-block-form--2">@T("home.search") </label>
+                                                                    <input title="Indiquer les termes à rechercher" placeholder="@T("home.search")" type="search" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text">
+                                                                </div>
+                                                                <a href="/" class="clear_search" style="display: none;">Effacer</a><div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="Rechercher" class="form-submit"></div><input type="hidden" name="form_build_id" value="form-mN5EZijqZ3qocth48h_Q8b1uSoeKRJYOxgMP1I1CgSE">
+                                                                <input type="hidden" name="form_id" value="search_block_form">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+                                            </div>
+                                            <div class="menu-mobile-links">
+                                                <div class="first-menu-mobile">
+                                                    <ul class="menu clearfix">
+                                                        @Html.Action("TopMenu", "Catalog", new { detectmobile = true })
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="show-desktop">
+        <div class="region region-highlighted">
+            <div class="region-inner clearfix">
+                <nav id="block-system-main-menu" class="block block-system block-menu no-title odd first last block-count-9 block-region-highlighted block-main-menu" role="navigation">
+                    <div class="block-inner clearfix">
+                        <div class="block-content content">
+                            <ul class="menu clearfix">
+                                @Html.Action("TopMenu", "Catalog", new { detectmobile = false })
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="show-responsive">
+    </div>
+</header>
+
+

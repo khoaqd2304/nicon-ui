@@ -1,0 +1,87 @@
+﻿@model PagedList.IPagedList<Nop.Web.Models.ProjectsUnderConstructions.ProjectsUnderConstructionViewModel>
+@using PagedList.Mvc;
+
+<div id="breadcrumb" class="clearfix">
+    <nav class="breadcrumb-wrapper clearfix">
+        <ol id="crumbs" class="clearfix">
+            <li class="crumb crumb-first">
+                <a>@T("homepage")</a>
+            </li>
+            <li class="crumb">
+                <span> >> </span>
+                <span class="crumb-title">
+                    @T("home.menu.projectsUnderConstruction")
+                </span>
+            </li>
+
+        </ol>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<div id="columns">
+    <div class="main_menu">
+        <div class="content-pinner">
+            <header id="main-content-header">
+                <h1 id="page-title">
+                    @T("home.menu.projectsUnderConstruction")
+                </h1>
+            </header>
+        </div>
+    </div>
+</div>
+<br />
+@if (Model != null && Model.Any())
+{
+    <div class="block block-bouygues-pages no-title even block-region-content listmap" style="display:flex;flex-wrap:wrap">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-1 product" style="width: 29%; margin-left:3%; float:left;min-height: 300px;">
+                <div class="title-wrapper">
+                    <a href="@Url.RouteUrl("ProjectsUnderConstructionItem", new { SeName = item.SeName })" class="metropole">@item.Title</a>
+                    <a href="@Url.RouteUrl("ProjectsUnderConstructionItem", new { SeName = item.SeName })">
+                        @*<div class="widows-div" style="background: url(@item.ImageUrl) no-repeat;width: 265px;height: 155px;">*@
+                            <div class="widows-div-puc">
+                                <img class="product-image" src="@item.ImageUrl" alt="Nature" class="responsive" style="width: 100%;height: 155px;">
+                            </div>
+                            <div class="subtitle achievements-lists">
+                                @Html.Raw(item.Short)
+                            </div>
+</a>
+                </div>
+            </div>
+        }
+    </div>
+    <br />
+    <div class="item-list margin-t-10">
+        @Html.PagedListPager(Model, page => Url.Action("ProjectsUnderConstructionListMenu", new { page }))
+    </div>
+}
+else
+{
+
+    <div class="page news-item-page class-blank">
+        <p>@T("No.Content")</p>
+    </div>
+}
+@*<div class="link-emble-parent">
+    <a class="link-emble">See our flagship projects</a>
+</div>*@
+
+

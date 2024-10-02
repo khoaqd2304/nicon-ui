@@ -1,0 +1,330 @@
+﻿<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 70%;
+    }
+
+    .showhide {
+        display: none;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    img {
+        width: 70%;
+        height: auto;
+    }
+
+    table td {
+        width: 80%;
+    }
+</style>
+<div class="content" style="font-size:18px;">
+    <h2>@T("Admin.WorkManagementProcess.GeneralProcess")</h2>
+    <div class="form-horizontal">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a class="showhideTable">
+                        Quy trình kiểm soát tài liệu
+                    </a>
+                    <div class="showhide">
+                        <div class="panel panel-default">
+                            <img src="~/Themes/Nicon/Content/file/kstl0001.jpg" alt="Quy trình kiểm soát tài liệu">
+                            <img src="~/Themes/Nicon/Content/file/kstl0002.jpg" alt="Quy trình kiểm soát tài liệu">
+                            <img src="~/Themes/Nicon/Content/file/kstl0003.jpg" alt="Quy trình kiểm soát tài liệu">
+                            <img src="~/Themes/Nicon/Content/file/kstl0004.jpg" alt="Quy trình kiểm soát tài liệu">
+                            <img src="~/Themes/Nicon/Content/file/kstl0005.jpg" alt="Quy trình kiểm soát tài liệu">
+                            <img src="~/Themes/Nicon/Content/file/kstl0006.jpg" alt="Quy trình kiểm soát tài liệu">
+                            <img src="~/Themes/Nicon/Content/file/kstl0007.jpg" alt="Quy trình kiểm soát tài liệu">
+                            <img src="~/Themes/Nicon/Content/file/kstl0008.jpg" alt="Quy trình kiểm soát tài liệu">
+                        </div>
+                        <table id="qtkstl">
+                            <thead>
+                                <tr>
+                                    <th>Biểu mẫu</th>
+                                    <th>Download</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>@T("blđqt01")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("blđqt01")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("blđqt01")).ToString() })</a></td>*@
+
+                                </tr>
+                                <tr>
+                                    <td>@T("bmblđqt0101")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("bmblđqt0101")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0101")).ToString() })</a></td>*@
+                                </tr>
+                                <tr>
+                                    <td>@T("bmblđqt0102")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("bmblđqt0102")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0102")).ToString() })</a></td>*@
+                                </tr>
+                                <tr>
+                                    <td>@T("bmblđqt0103")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("bmblđqt0103")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0103")).ToString() })</a></td>*@
+                                </tr>
+                                <tr>
+                                    <td>@T("bmblđqt0104")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("bmblđqt0104")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0104")).ToString() })</a></td>*@
+                                </tr>
+                                <tr>
+                                    <td>@T("bmblđqt0105")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("bmblđqt0105")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0105")).ToString() })</a></td>*@
+                                </tr>
+                                <tr>
+                                    <td>@T("bmblđqt0106")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("bmblđqt0106")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0106")).ToString() })</a></td>*@
+                                </tr>
+                                <tr>
+                                    <td>@T("bmblđqt0107")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("bmblđqt0107")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0107")).ToString() })</a></td>*@
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a class="showhideTable">Quy trình đánh giá nội bộ</a>
+                    <div class="showhide">
+                        <div class="panel panel-default">
+                            <img src="~/Themes/Nicon/Content/file/dgnb1.jpg" alt="Quy trình đánh giá nội bộ">
+                            <img src="~/Themes/Nicon/Content/file/dgnb2.jpg" alt="Quy trình đánh giá nội bộ">
+                            <img src="~/Themes/Nicon/Content/file/dgnb3.jpg" alt="Quy trình đánh giá nội bộ">
+                            <img src="~/Themes/Nicon/Content/file/dgnb4.jpg" alt="Quy trình đánh giá nội bộ">
+                            <img src="~/Themes/Nicon/Content/file/dgnb5.jpg" alt="Quy trình đánh giá nội bộ">
+                            <img src="~/Themes/Nicon/Content/file/dgnb6.jpg" alt="Quy trình đánh giá nội bộ">
+                            <img src="~/Themes/Nicon/Content/file/dgnb7.jpg" alt="Quy trình đánh giá nội bộ">
+                            <img src="~/Themes/Nicon/Content/file/dgnb8.jpg" alt="Quy trình đánh giá nội bộ">
+                        </div>
+                        <table id="qtdgnb">
+                            <thead>
+                                <tr>
+                                    <th>Biểu mẫu</th>
+                                    <th>Download</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>@T("BLĐQT02")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("BLĐQT02")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("blđqt01")).ToString() })</a></td>*@
+
+                                </tr>
+                                <tr>
+                                    <td>@T("BMBLĐQT0201")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("BMBLĐQT0201")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0101")).ToString() })</a></td>*@
+                                </tr>
+                                <tr>
+                                    <td>@T("BMBLĐQT0202")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("BMBLĐQT0202")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0102")).ToString() })</a></td>*@
+                                </tr>
+                                <tr>
+                                    <td>@T("BMBLĐQT0203")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("BMBLĐQT0203")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0103")).ToString() })</a></td>*@
+                                </tr>
+                                <tr>
+                                    <td>@T("BMBLĐQT0204")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("BMBLĐQT0204")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0104")).ToString() })</a></td>*@
+                                </tr>
+                                <tr>
+                                    <td>@T("BMBLĐQT0205")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("BMBLĐQT0205")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0105")).ToString() })</a></td>*@
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a class="showhideTable"> Quy trình cải tiến</a>
+                    <div class="showhide">
+                        <div class="panel panel-default">
+                            <img src="~/Themes/Nicon/Content/file/qtct01.jpg" alt="Quy trình cải tiến">
+                            <img src="~/Themes/Nicon/Content/file/qtct02.jpg" alt="Quy trình cải tiến">
+                            <img src="~/Themes/Nicon/Content/file/qtct03.jpg" alt="Quy trình cải tiến">
+                            <img src="~/Themes/Nicon/Content/file/qtct04.jpg" alt="Quy trình cải tiến">
+                            <img src="~/Themes/Nicon/Content/file/qtct05.jpg" alt="Quy trình cải tiến">
+                            <img src="~/Themes/Nicon/Content/file/qtct06.jpg" alt="Quy trình cải tiến">
+                            <img src="~/Themes/Nicon/Content/file/qtct07.jpg" alt="Quy trình cải tiến">
+                            <img src="~/Themes/Nicon/Content/file/qtct08.jpg" alt="Quy trình cải tiến">
+                            <img src="~/Themes/Nicon/Content/file/qtct09.jpg" alt="Quy trình cải tiến">
+                        </div>
+                        <table id="qtct">
+                            <thead>
+                                <tr>
+                                    <th>Biểu mẫu</th>
+                                    <th>Download</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>@T("BLDQT03")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("BLDQT03")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("blđqt01")).ToString() })</a></td>*@
+
+                                </tr>
+                                <tr>
+                                    <td>@T("BM0506")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("BM0506")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0101")).ToString() })</a></td>*@
+                                </tr>
+                                <tr>
+                                    <td>@T("BM07Bienbangiaiquyetsuco")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("BM07Bienbangiaiquyetsuco")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0102")).ToString() })</a></td>*@
+                                </tr>
+                                <tr>
+                                    <td>@T("BMBLDQT0301")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("BMBLDQT0301")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0103")).ToString() })</a></td>*@
+                                </tr>
+                                <tr>
+                                    <td>@T("BMBLDQT0302")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("BMBLDQT0302")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0104")).ToString() })</a></td>*@
+                                </tr>
+                                <tr>
+                                    <td>@T("BMBLDQT0303")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("BMBLDQT0303")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0105")).ToString() })</a></td>*@
+                                </tr>
+                                <tr>
+                                    <td>@T("BMBLDQT0304")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("BMBLDQT0304")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0105")).ToString() })</a></td>*@
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a class="showhideTable">Quy trình đánh giá rủi ro - cơ hội</a>
+                    <div class="showhide">
+                        <div class="panel panel-default">
+                            <img src="~/Themes/Nicon/Content/file/dgrrch0001.jpg" alt="Quy trình đánh giá rủi ro - cơ hội">
+                            <img src="~/Themes/Nicon/Content/file/dgrrch0002.jpg" alt="Quy trình đánh giá rủi ro - cơ hội">
+                        </div>
+                        <table id="qtdgrrch">
+                            <thead>
+                                <tr>
+                                    <th>Biểu mẫu</th>
+                                    <th>Download</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>@T("BLĐQT03")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("BLĐQT03")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("blđqt01")).ToString() })</a></td>*@
+
+                                </tr>
+                                <tr>
+                                    <td>@T("BMBLĐQT0301BANGXACDINH")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("BMBLĐQT0301BANGXACDINH")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0101")).ToString() })</a></td>*@
+                                </tr>
+                                <tr>
+                                    <td>@T("BMBLĐQT0302BAOCAO")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("BMBLĐQT0302BAOCAO")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0102")).ToString() })</a></td>*@
+                                </tr>
+                                <tr>
+                                    <td>@T("BMBLĐQT0303KEHOACH")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("BMBLĐQT0303KEHOACH")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0103")).ToString() })</a></td>*@
+                                </tr>
+                                <tr>
+                                    <td>@T("BMBLĐQT0304")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("BMBLĐQT0304")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0104")).ToString() })</a></td>*@
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a class="showhideTable">Quy trình xác định bối cảnh</a>
+                    <div class="showhide">
+                        <div class="panel panel-default">
+                            <img src="~/Themes/Nicon/Content/file/qtxdbc0004.jpg" alt="Quy trình xác định bối cảnh">
+                            <img src="~/Themes/Nicon/Content/file/qtxdbc0005.jpg" alt="Quy trình xác định bối cảnh">
+                            <img src="~/Themes/Nicon/Content/file/qtxdbc0006.jpg" alt="Quy trình xác định bối cảnh">
+                        </div>
+                        <table id="qtct">
+                            <thead>
+                                <tr>
+                                    <th>Biểu mẫu</th>
+                                    <th>Download</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>@T("BLĐQT04")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("BLĐQT04")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("blđqt01")).ToString() })</a></td>*@
+
+                                </tr>
+                                <tr>
+                                    <td>@T("BMBLĐQT0401Xacdinhboicanh")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("BMBLĐQT0401Xacdinhboicanh")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0101")).ToString() })</a></td>*@
+                                </tr>
+                                <tr>
+                                    <td>@T("BMBLĐQT0402Xacdinhyeucaucacbenhuuquan")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("BMBLĐQT0402Xacdinhyeucaucacbenhuuquan")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0102")).ToString() })</a></td>*@
+                                </tr>
+                                <tr>
+                                    <td>@T("BMBLĐQT0403BENLIENQUANVAYC")</td>
+                                    <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("BMBLĐQT0403BENLIENQUANVAYC")).ToString() })</a></td>
+                                    @*<td>  <a> @Html.ActionLink("View File", "ViewFile", new { fileName = (@T("bmblđqt0103")).ToString() })</a></td>*@
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('.showhideTable').click(function () {
+        if (this.nextElementSibling.style.display === "none") {
+            this.nextElementSibling.style.display = "block";
+        } else {
+            this.nextElementSibling.style.display = "none";
+        }
+    });
+</script>
+

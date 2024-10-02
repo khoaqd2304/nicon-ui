@@ -1,0 +1,81 @@
+﻿<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    table td {
+        width: 80%;
+    }
+    img {
+        width: 100%;
+        height: auto;
+    }
+</style>
+<div class="content" style="font-size:18px;">
+    <h2>@T("Admin.WorkManagementProcess.TKProcess")</h2>
+    <div class="form-horizontal">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <img src="~/Themes/Nicon/Content/file/tk01.jpg" alt="Quy trình thiết kế">
+                <img src="~/Themes/Nicon/Content/file/tk02.jpg" alt="Quy trình thiết kế">
+                <img src="~/Themes/Nicon/Content/file/tk03.jpg" alt="Quy trình thiết kế">
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table id="qttk">
+                        <thead>
+                            <tr>
+                                <th>Biễu mẫu</th>
+                                <th>Download</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@T("BMBLĐQT0108")</td>
+                                <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("BMBLĐQT0108")).ToString() })</a></td>
+                            </tr>
+                            <tr>
+                                <td>@T("KTPL1QTTK")</td>
+                                <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("KTPL1QTTK")).ToString() })</a></td>
+                            </tr>
+                            <tr>
+                                <td>@T("KTPL2TMTK")</td>
+                                <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("KTPL2TMTK")).ToString() })</a></td>
+                            </tr>
+                            <tr>
+                                <td>@T("Quytrinhthietke")</td>
+                                <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("Quytrinhthietke")).ToString() })</a></td>
+                            </tr>
+                            <tr>
+                                <td>@T("THUYETMINHCOSO")</td>
+                                <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("THUYETMINHCOSO")).ToString() })</a></td>
+                            </tr>
+                            <tr>
+                                <td>@T("TKM01Phieuthongtinkhachhang")</td>
+                                <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("TKM01Phieuthongtinkhachhang")).ToString() })</a></td>
+                            </tr>
+                            <tr>
+                                <td>@T("TKM03Bienbannghiemthuhoso")</td>
+                                <td> <a> @Html.ActionLink("Download", "DownloadFile", new { fileName = (@T("TKM03Bienbannghiemthuhoso")).ToString() })</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

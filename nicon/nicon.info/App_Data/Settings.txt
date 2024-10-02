@@ -1,0 +1,2 @@
+DataProvider: sqlserver
+DataConnectionString: Data Source=insect-rds.maychudns.net,1442;Initial Catalog=vietnamconstruction_info_nicon2;Integrated Security=False;Persist Security Info=False;User ID=vietnamconstruction_user;Password=Kuzb3*85;

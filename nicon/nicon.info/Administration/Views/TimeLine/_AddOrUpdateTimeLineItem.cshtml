@@ -1,0 +1,105 @@
+﻿@using Nop.Admin.Models.Timeline
+@model TimelineModel
+<div id="timeline-add-update" class="modal fade" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">@T("Admin.ContentManagement.TimeLineItem.AddNewOrUpdate")</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+            <div class="modal-body">
+                <div class="tab-pane">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <div class="label-wrapper"><label class="control-label" for="fileimage" title="@T("Admin.Message.Images")">@T("Admin.Message.Images")</label></div>
+                                    <input type="hidden" name="PictureId" id="PictureId" value="0" />
+                                    <input type="hidden" name="TimelineItemId" id="TimelineItemId" value="0" />
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="dropzone-submit-form-one dropzone">
+                                        <div class="file-container">
+                                            <div class="dz-message dz-default dz-preview"><div class="title-images">@T("Admin.Catalog.Products.Click.Add.Images")</div></div>
+                                            <div class="fallback">
+                                                <input type="file" name="fileimage" id="fileimage" multiple />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="hidden img-timeline-item">
+                                        <img width="50%" /><button type="button" id="delete-image-timeline" title="@T("Admin.Common.Delete")" class="btn btn-sm bg-red">
+                                            <i class="fa fa-trash-o"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <div class="label-wrapper"><label class="control-label" for="Year" title="@T("Admin.ContentManagement.Timeline.Year.Item")">@T("Admin.ContentManagement.Timeline.Year.Item")</label></div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="input-group input-group-required">
+                                        <input class="form-control text-box single-line" data-val="true" id="Year" name="Year" maxlength="20" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    @Html.NopLabelFor(model => model.Short)
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="input-group input-group-required">
+                                        @Html.TextArea("ShortItem", new { @class = "form-control", @rows = 5, @maxlength = "3000" }) @*"RichEditor"*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    @Html.NopLabelFor(model => model.DisplayNumber)
+                                </div>
+                                <div class="col-md-9">
+                                    @Html.NopEditorFor(model => model.DisplayNumber)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <div class="label-wrapper"><label class="control-label" for="IsActive" title="">@T("Admin.ContentManagement.Timeline.Fields.IsActive")</label></div>
+                                </div>
+                                <div class="col-md-9">
+                                    <input checked="checked" class="check-box" data-val="true" data-val-required="'IsActive' must not be empty." id="IsActive" name="IsActive" type="checkbox" value="true"><input name="IsActive" type="hidden" value="false">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn bg-blue add-update-timeline-item">
+                    <i class="fa fa-plus-square"></i>
+                    @T("Admin.Common.AddNew")
+                </button>
+                <span class="btn btn-default pull-right" data-dismiss="modal">Đóng</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+

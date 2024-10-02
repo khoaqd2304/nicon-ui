@@ -1,0 +1,90 @@
+﻿@model List<Nop.Web.Models.Recruitment.RecruitmentItemModel>
+<div id="breadcrumb" class="clearfix">
+    <nav class="breadcrumb-wrapper clearfix">
+        <ol id="crumbs" class="clearfix">
+            <li class="crumb crumb-first">
+                <a>@T("homepage")</a>
+            </li>
+            <li class="crumb">
+                <span> >> </span>
+                <span class="crumb-title">
+                    @T("home.menu.recruitment")
+                </span>
+            </li>
+
+        </ol>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<div id="columns" class="columns clearfix">
+    <div id="content-column" class="content-column">
+        <div class="content-inner">
+            <div id="main-content">
+                <header id="main-content-header" class="clearfix">
+                    <h1 id="page-title">
+                        <span>@T("home.menu.recruitment")</span>
+                    </h1>
+                </header>
+                <div id="content" class="region">
+                    <div id="block-system-main">
+                        <div class="view-content">
+                            @if (Model != null && Model.Any())
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <div class="views-row-recruitment views-row-1 views-row-odd views-row-first">
+                                        <div class="views-field views-field-nothing">
+                                            <div class="date">
+                                                @item.CreatedOn.ToString("dd/MM/yyyy")
+                                            </div>
+                                            <div class="titre">
+                                                <a href="@Url.RouteUrl("RecruitmentItem", new { SeName = item.SeName })"> @item.Title  </a>
+                                            </div>
+                                            <div class="contenu-recruitment">
+                                                <div class="content-text-recruitment">
+                                                    @Html.Raw(@item.Short)
+                                                </div>
+                                                <div class="lien-recruitment">
+                                                    <a href="@Url.RouteUrl("RecruitmentItem", new { SeName = item.SeName })">
+                                                        @T("recruitment.detail")
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <div class="page news-item-page class-blank">
+                                    <p>@T("No.Content")</p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

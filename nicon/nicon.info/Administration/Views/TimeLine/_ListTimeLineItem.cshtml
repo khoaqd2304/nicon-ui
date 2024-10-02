@@ -1,0 +1,53 @@
+﻿@using Nop.Admin.Models.Timeline
+@model IEnumerable<TimeLineItemModel>
+@if (Model != null && Model.Any())
+{
+    int i = 1;
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">@T("Admin.ContentManagement.TimeLineItem.Picture")</th>
+                <th scope="col">@T("Admin.ContentManagement.TimeLineItem.Year")</th>
+                <th scope="col">@T("Admin.ContentManagement.TimeLineItem.OrderBy")</th>
+                <th scope="col">@T("Admin.ContentManagement.TimeLineItem.IsActive")</th>
+                <th scope="col">@T("Admin.ContentManagement.TimeLineItem.CreateDate")</th>
+                <th scope="col">@T("Admin.ContentManagement.TimeLineItem.UpdateDate")</th>
+                <th scope="col">@T("Admin.ContentManagement.TimeLineItem.Handle")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@i</th>
+                    <td class="text-center"><img src="@item.UrlPicture" width="30%" /></td>
+                    <td class="text-center">@item.Year</td>
+                    <td class="text-center">@item.OrderBy</td>
+                    <td class="text-center">
+                    @if (item.IsActive)
+                        {<i class="fa fa-check true-icon"></i>}
+                    else
+                        { <i class="fa fa-close false-icon"></i> }
+                    </td>
+                    <td class="text-center">@item.CreateDate.ToString("dd/MM/yyyy")</td>
+                    <td class="text-center">@item.UpdateDate.ToString("dd/MM/yyyy")</td>
+                    <td class="text-center"><button type="button" title="@T("Admin.Common.Edit")" data-id="@item.Id" class="btn btn-sm bg-blue btn-edit-timelineitem"><i class="fa fa-edit"></i>@T("Admin.Common.Edit")</button> <button type="button" data-id="@item.Id" class="btn btn-sm bg-red btn-delete-timelineitem" title="@T("Admin.Common.Delete")"><i class="fa fa-trash-o"></i>@T("Admin.Common.Delete")</button></td>
+            </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="alert alert-warning">@T("Admin.ContentManagement.TimeLineItem.NoItem")</p>
+}
+
+
+
+
+
+
+
+

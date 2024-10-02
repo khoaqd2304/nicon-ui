@@ -1,0 +1,260 @@
+﻿@using Nop.Admin.Models.News
+@model NewsModel
+
+@Html.ValidationSummary(true)
+@Html.HiddenFor(model => model.Id)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        bindBootstrapTabSelectEvent('news-edit');
+    });
+</script>
+<div class="content">
+    <div class="form-horizontal">
+        <div id="news-edit" class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                @Html.RenderBootstrapTabHeader("tab-info", @T("Admin.ContentManagement.News.NewsItems.Info"), true)
+                @Html.RenderBootstrapTabHeader("tab-seo", @T("Admin.Common.SEO"))
+            </ul>
+            <div class="tab-content">
+                @Html.RenderBootstrapTabContent("tab-info", @TabInfo(), true)
+                @Html.RenderBootstrapTabContent("tab-seo", @TabSeo())
+            </div>
+        </div>
+    </div>
+</div>
+@{
+    //custom tabs
+    var eventMessage = new AdminTabStripCreated(this.Html, "news-edit");
+    EngineContext.Current.Resolve<IEventPublisher>().Publish(eventMessage);
+    foreach (var eventBlock in eventMessage.BlocksToRender)
+    {
+        @eventBlock
+    }
+}
+
+@*save selected tab name*@
+<input type="hidden" id="selected-tab-name" name="selected-tab-name" value="@(Html.GetSelectedTabName())">
+
+@helper TabInfo()
+    {
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.NopLabelFor(model => model.LanguageId)
+                            @Html.HiddenFor(model => model.ImageDeletes)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.NopDropDownListFor(model => model.LanguageId, Model.AvailableLanguages)
+                            @Html.ValidationMessageFor(model => model.LanguageId)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.NopLabelFor(model => model.Short)
+                        </div>
+                        <div class="col-md-9">
+                            <div class="input-group input-group-required">
+                                @Html.EditorFor(x => x.Short, "RichEditor")
+                                <div class="input-group-btn">
+                                    @Html.RequiredHint()
+                                </div>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Short)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.NopLabelFor(model => model.Title)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.NopEditorFor(model => model.Title, required: true)
+                            @Html.ValidationMessageFor(model => model.Title)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.NopLabelFor(model => model.Full)
+                        </div>
+                        <div class="col-md-9">
+                            <div class="input-group input-group-required">
+                                @Html.EditorFor(x => x.Full, "RichEditor")
+                                <div class="input-group-btn">
+                                    @Html.RequiredHint()
+                                </div>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Full)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.NopLabelFor(model => model.IsActive)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.NopEditorFor(model => model.IsActive)
+                        </div>
+                    </div>
+                    @if (Model.Id > 0)
+    {
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.NopLabelFor(model => model.CreateDate)
+                    </div>
+                    <div class="col-md-9">
+                        @Model.CreateDate
+                    </div>
+                </div>
+}
+
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.NopLabelFor(model => model.Files)
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="upload-btn-wrapper">
+                                        <button class="btn-upload">@T("Admin.Upload.File")</button>
+                                        @Html.TextBoxFor(model => model.Files, "", new { @type = "file", @accept = "image/*", @multiple = "multiple" })
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div id="dvPreview">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @if (Model.ImagesUrl != null)
+    {
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="row list-img-edit">
+                            @foreach (var item in Model.ImagesUrl)
+            {
+                <div class="col-md-3 margin-t-10 del-picture-id del-picture-@item.PictureId"><span title="Xóa" class="del-picture text-danger" data-pictureid="@item.PictureId"><i class="fa fa-trash-o"></i></span><img width="80%" class="img-picture" height="150" src="@item.Url"></div>
+}
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+}
+
+
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).on('click', '.del-picture', function () {
+                var pictureid = $(this).data('pictureid');
+                $('.del-picture-' + pictureid).remove();
+                var valuedelete = $('#ImageDeletes').val();
+                if (valuedelete != null && valuedelete != undefined && valuedelete != '') { valuedelete = valuedelete + "," + pictureid; }
+                else { valuedelete = pictureid; }
+                $('#ImageDeletes').val(valuedelete);
+            })
+            $(document).on('change', '#Files', function () {
+                if (typeof (FileReader) != "undefined") {
+                    var dvPreview = $("#dvPreview");
+                    dvPreview.html("");
+                    var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp |.ico)$/;
+                    $($(this)[0].files).each(function () {
+                        var file = $(this);
+                        if (regex.test(file[0].name.toLowerCase())) {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                var img = $("<img />");
+                                img.attr("style", "height:114px;width: 150px;padding: 0 0.4em;object-fit: contain;");
+                                img.attr("src", e.target.result);
+                                dvPreview.append(img);
+                            }
+                            reader.readAsDataURL(file[0]);
+                        } else {
+                            MsgDanger('Message', file[0].name + " is not a valid image file.", 3000);
+                            dvPreview.html("");
+                            return false;
+                        }
+                    });
+                } else {
+                    MsgDanger('Message', "This browser does not support HTML5 FileReader.", 3000);
+                }
+            })
+        </script>
+}
+@helper TabSeo()
+    {
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.NopLabelFor(model => model.MetaKeywords)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.NopEditorFor(x => x.MetaKeywords)
+                            @Html.ValidationMessageFor(model => model.MetaKeywords)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.NopLabelFor(model => model.MetaDescription)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.NopTextAreaFor(model => model.MetaDescription)
+                            @Html.ValidationMessageFor(model => model.MetaDescription)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.NopLabelFor(model => model.MetaTitle)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.NopEditorFor(model => model.MetaTitle)
+                            @Html.ValidationMessageFor(model => model.MetaTitle)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.NopLabelFor(model => model.SeName)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.NopEditorFor(model => model.SeName)
+                            @Html.ValidationMessageFor(model => model.SeName)
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#@Html.FieldIdFor(model => model.SeName)').on('input propertychange paste', function () {
+                            var parameters = {
+                                entityId: '@Model.Id',
+                                entityName: 'NewsItem',
+                                seName: $(this).val()
+                            };
+                            warningValidation('@Url.Action("UrlReservedWarning", "Common")', '@Html.FieldNameFor(model => model.SeName)', parameters);
+                        });
+                    });
+                    </script>
+                </div>
+            </div>
+        </div>
+}

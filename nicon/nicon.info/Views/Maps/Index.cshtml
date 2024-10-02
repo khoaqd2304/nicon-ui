@@ -1,0 +1,66 @@
+﻿@model Nop.Core.Domain.Maps.Map
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9hGN_DsVhowcp-X2Kc_wsi7KbQcVoq0Y&libraries=places&sensor=false"></script>
+<style>
+    .maps-api {
+        height: 350px !important;
+    }
+</style>
+<div id="breadcrumb" class="clearfix">
+    <nav class="breadcrumb-wrapper clearfix">
+        <ol id="crumbs" class="clearfix">
+            <li class="crumb crumb-first">
+                <a>@T("homepage")</a>
+            </li>
+            <li class="crumb">
+                <span> >> </span>
+                <span class="crumb-title">
+                    @T("home.menu.maps")
+                </span>
+            </li>
+
+        </ol>
+    </nav>
+</div>
+<div id="columns" class="columns clearfix">
+    <div id="content-column" class="content-column">
+        <div class="content-inner">
+            <div id="main-content">
+                <header id="main-content-header" class="clearfix">
+                    <h1 id="page-title">
+                        @T("home.menu.maps")
+                    </h1>
+                </header>
+                <div id="full-width">
+                    <div class="content-box">
+                        @Html.HiddenFor(x => x.Location)
+                        <div id="map-api" class="maps-api"></div>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/google-maps-publish.min.js"></script>

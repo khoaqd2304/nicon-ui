@@ -1,0 +1,38 @@
+﻿@model BoardsIndexModel
+@using Nop.Web.Models.Boards;
+@{
+    Layout = "~/Views/Shared/_ColumnsOne.cshtml";
+
+    //title
+    Html.AddTitleParts(T("Forum.PageTitle.Default").Text);
+    //page class
+    Html.AppendPageCssClassParts("html-forums-main-page");
+}
+<div class="page forums-main-page">
+    @Html.Partial("_ForumHeader")
+    @foreach (var forumGroup in Model.ForumGroups)
+    {
+        Html.RenderPartial("_ForumGroup", forumGroup);
+    }
+    @Html.Action("ActiveDiscussionsSmall")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+

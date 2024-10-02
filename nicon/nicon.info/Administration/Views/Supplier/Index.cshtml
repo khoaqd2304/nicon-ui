@@ -1,0 +1,448 @@
+﻿@using Nop.Admin.Models.Supplier
+@model  SupplierModel
+@{
+    var defaultGridPageSize = EngineContext.Current.Resolve<Nop.Core.Domain.Common.AdminAreaSettings>().DefaultGridPageSize;
+    var gridPageSizes = EngineContext.Current.Resolve<Nop.Core.Domain.Common.AdminAreaSettings>().GridPageSizes;
+
+    //page title
+    ViewBag.Title = T("Admin.ContentManagement.Supplier").Text;
+    //active menu item (system name)
+    Html.SetActiveMenuItemSystemName("Supplier");
+}
+
+@Html.AntiForgeryToken()
+<div class="content-header clearfix">
+    <h1 class="pull-left">
+        @T("Admin.ContentManagement.Supplier")
+    </h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="content">
+    <div class="form-horizontal">
+        <div class="panel-group">
+            @*hide the entire search block if no elements are displayed*@
+            <div class="panel panel-default panel-search">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    @Html.NopLabelFor(model => model.KeyWork)
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.NopEditorFor(model => model.KeyWork)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    @Html.NopLabelFor(model => model.LanguageId)
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.NopDropDownListFor(model => model.LanguageId, Model.AvailableLanguages)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-8 col-md-offset-4">
+                                    <button type="button" id="search-customerwork" class="btn btn-primary">
+                                        <i class="fa fa-search"></i>
+                                        @T("Admin.Common.Search")
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div id="customerwork-grid"></div>
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "form-customerwork" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <h3>
+                                    @T("Admin.Message.Images")
+                                </h3>
+                                <div class="dropzone-submit-form-one dropzone">
+                                    <div class="file-container">
+                                        <div class="dz-message dz-default dz-preview"><div class="title-images">@T("Admin.Catalog.Products.Click.Add.Images")</div></div>
+                                        <div class="fallback">
+                                            <input type="file" name="fileimage" id="fileimage" multiple />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="row list-img-edit"></div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                @Html.NopLabelFor(model => model.Title)
+                            </div>
+                            <div class="col-md-8">
+                                @Html.NopEditorFor(model => model.Title)
+                                @Html.HiddenFor(model => model.Id)
+                                @Html.HiddenFor(model => model.Pictureid)
+                                @Html.HiddenFor(model => model.Url)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                @Html.NopLabelFor(model => model.LanguageId)
+                            </div>
+                            <div class="col-md-8">
+                                @Html.NopDropDownList("LanguageIdCre", Model.AvailableLanguages)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                @Html.NopLabelFor(model => model.DisplayNumber)
+                            </div>
+                            <div class="col-md-8">
+                                @Html.NopEditorFor(model => model.DisplayNumber)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                @Html.NopLabelFor(model => model.Published)
+                            </div>
+                            <div class="col-md-8">
+                                @Html.NopEditorFor(model => model.Published)
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                @Html.NopLabelFor(model => model.IsActive)
+                            </div>
+                            <div class="col-md-8">
+                                @Html.NopEditorFor(model => model.IsActive)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                @Html.NopLabelFor(model => model.LinkUrl)
+                            </div>
+                            <div class="col-md-8">
+                                @Html.NopEditorFor(model => model.LinkUrl)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4 col-md-offset-4">
+                                <button type="button" class="btn btn-primary add-customer-work"><i class="fa fa-plus-square"></i>@T("Admin.Common.AddNew")</button>
+                            </div>
+                        </div>
+                    }
+                    <script>
+                        $(document).ready(function () {
+
+                            $("#customerwork-grid").kendoGrid({
+                            dataSource: {
+                                type: "json",
+                                    transport: {
+                                    read: {
+                                        url: "@Html.Raw(Url.Action("List", "Supplier"))",
+                                            type: "POST",
+                                            dataType: "json",
+                                            data: additionalData
+                                        }
+                                },
+                                    schema: {
+                                    data: "Data",
+                                        total: "Total",
+                                        errors: "Errors"
+                                    },
+                                    error: function(e) {
+                                    display_kendoui_grid_error(e);
+                                    // Cancel the changes
+                                    this.cancelChanges();
+                                },
+                                    pageSize: @(defaultGridPageSize),
+                                serverPaging: true,
+                                serverFiltering: true,
+                                serverSorting: false
+                                },
+                                sortable: {
+                                    mode: "multiple",
+                                    allowUnsort: true,
+                                    showIndexes: true
+                                },
+                                groupable: true,
+                                pageable: {
+                                refresh: true,
+                                    pageSizes: [@(gridPageSizes)],
+                                    @Html.Partial("_GridPagerMessages")
+                                },
+                                editable: {
+                                confirmation: "@T("Admin.Common.DeleteConfirmation")",
+                                    mode: "inline"
+                                },
+                                scrollable: false,
+                                columns: [
+                                    {
+                                field: "UrlImage",
+                                        title: "@T("Admin.ContentManagement.CustomerWork.Fields.UrlImage")",
+                                        template: '<img src="#=UrlImage#" style="width:100px" />',
+                                    }, {
+                                field: "LanguageName",
+                                        title: "@T("Admin.ContentManagement.Common.Fields.Language")",
+                                        width: 200,
+                                        headerAttributes: { style: "text-align:center" },
+                                        attributes: { style: "text-align:center" },
+                                    }, {
+                                field: "Title",
+                                        title: "@T("Admin.ContentManagement.Common.Fields.Title")",
+                                        width: 200
+                                    }
+                                    , {
+                                field: "IsActive",
+                                        title: "@T("Admin.ContentManagement.CustomerWork.Fields.IsActive")",
+                                        width: 100,
+                                        headerAttributes: { style: "text-align:center" },
+                                        attributes: { style: "text-align:center" },
+                                        template: '# if(IsActive) {# <i class="fa fa-check true-icon"></i> #} else {# <i class="fa fa-close false-icon"></i> #} #'
+                                    }, {
+                                field: "Published",
+                                        title: "@T("Admin.ContentManagement.Common.Fields.Published")",
+                                        width: 100,
+                                        headerAttributes: { style: "text-align:center" },
+                                        attributes: { style: "text-align:center" },
+                                        template: '# if(Published) {# <i class="fa fa-check true-icon"></i> #} else {# <i class="fa fa-close false-icon"></i> #} #'
+                                    }, {
+                                field: "CreateDate",
+                                        title: "@T("Admin.ContentManagement.CustomerWork.Fields.CreatedOn")",
+                                        width: 200,
+                                        type: "date",
+                                        format: "{0:G}",
+                                        headerAttributes: { style: "text-align:center" },
+                                        attributes: { style: "text-align:center" },
+                                    }, {
+                                field: "Id",
+                                        title: "@T("Admin.Common.Process")",
+                                        width: 100,
+                                        headerAttributes: { style: "text-align:center" },
+                                        attributes: { style: "text-align:center" },
+                                        template: '<button class="btn btn-default edit-customer-work" data-id="#=Id#"><i class="fa fa-pencil"></i>@T("Admin.Common.Edit")</button><button class="btn bg-red delete-customer" data-id="#=Id#"><i class="fa fa-trash-o"></i>@T("Admin.Common.Delete")</button>'
+                                    }
+                                ]
+                            });
+                    });
+                    </script>
+
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            //search button
+                            $('#search-customerwork').click(function () {
+                                //search
+                                var grid = $('#customerwork-grid').data('kendoGrid');
+                                grid.dataSource.page(1); //new search. Set page size to 1
+                                //grid.dataSource.read(); we already loaded the grid above using "page" function
+                                return false;
+                            });
+                        });
+
+                        function additionalData() {
+                            var data = {
+                                KeyWork: $('#KeyWork').val(),
+                                LanguageId: $('#LanguageId').val(),
+                            };
+                            addAntiForgeryToken(data);
+                            return data;
+                        }
+                        // get file
+                        var getFileUpload = function () {
+                            var fd = new FormData($('#form-customerwork').get(0));
+                            var forms = $('.dropzone-submit-form-one');
+                            $.each(forms, function (j, drz) {
+                                var qaDropzone = drz.dropzone;
+                                var files = qaDropzone.getAcceptedFiles();
+                                $.each(files, function (k, file) {
+                                    fd.append('file-' + j + '-' + k, file);
+                                    $('.list-img-edit').empty();
+                                    $('#Url').val('');
+                                });
+                            });
+                            return fd;
+                        }
+                        var valitateform = function () {
+                            var $title = $('#Title'), check = false, $languageIdCre = $('#LanguageIdCre'), $displayNumber = $('#DisplayNumber');
+                            if ($title.val().trim() == '') { $title.addClass('error'); check = true; }
+                            else $title.removeClass('error');
+                            if ($languageIdCre.val() == '' || $languageIdCre == undefined) {
+                                $languageIdCre.addClass('error'); check = true;
+                            } else $languageIdCre.removeClass('error');
+                            if ($displayNumber.val() == '' || $displayNumber == undefined) {
+                                $displayNumber.addClass('error'); check = true;
+                            } else $displayNumber.removeClass('error');
+                            return check;
+                        }
+                        var resetvalue = function () {
+                            $('#Id').val(0);
+                            $('#Title').val("");
+                            $('#LanguageIdCre').val("");
+                            $('#DisplayNumber').val(0);
+                            $('#Published').attr("checked", false);
+                            $('#IsActive').attr("checked", false);
+                            $('#Pictureid').val(0);
+                            $('#LinkUrl').val('');
+                            $('#Url').val('');
+                            Dropzone.forElement('.dropzone-submit-form-one').removeAllFiles(true);
+                            $('.list-img-edit').empty();
+                            scrollbottom();
+                        }
+                        $(document).on('click', '.add-customer-work', function () {
+                            var validate = false;
+                            if (valitateform()) validate = true;
+                            if (validate) { MsgWarning('Thông báo', 'Nhập thông tin', 3000); return; };// validate = true
+                            var $modelfiles = getFileUpload();
+                            var $model = {
+                                Id: $('#Id').val(),
+                                Title: $('#Title').val(),
+                                LanguageId: $('#LanguageIdCre').val(),
+                                DisplayNumber: $('#DisplayNumber').val(),
+                                Published: $('#Published').val(),
+                                IsActive: $('#IsActive').val(),
+                                Pictureid: $('#Pictureid').val(),
+                                Url: $('#Url').val(),
+                                LinkUrl: $('#LinkUrl').val()
+                            }
+                            $modelfiles.append('model', JSON.stringify($model));
+                            //addAntiForgeryToken($modelfiles);
+                            $.ajax({
+                                cache: false,
+                                type: 'POST',
+                                url: '/Admin/Supplier/SaveSupplier',
+                                data: $modelfiles,
+                                dataType: 'json',
+                                contentType: false,
+                                processData: false,
+                                success: function (datas) {
+                                    if (datas > 0) {
+                                        $('#Id').val(datas);
+                                        $('#search-customerwork').click();
+                                        MsgSuccess('Thông báo', 'Cập nhật thành công', 3000);
+                                        resetvalue();
+                                    }
+                                    else MsgDanger('Thông báo', 'Lỗi cập nhật tin', 3000);
+                                },
+                                failure: function (message) {
+                                    MsgDanger('Thông báo', 'Lỗi cập nhật tin', 3000);
+                                    console.log("Error:" + message);
+                                }
+                            });
+                        });
+                        $(document).on('click', '.edit-customer-work', function () {
+                            var postData = { Id: $(this).data('id') };
+                            addAntiForgeryToken(postData);
+                            $.ajax({
+                                cache: false,
+                                type: 'POST',
+                                url: '/Admin/Supplier/EditSupplier',
+                                data: postData,
+                                dataType: 'json',
+                                success: function (datas) {
+                                    if (datas != null) {
+                                        $('#Id').val(datas.Id);
+                                        $('#Title').val(datas.Title);
+                                        $('#LinkUrl').val(datas.LinkUrl);
+                                        $('#LanguageIdCre').val(datas.LanguageId);
+                                        $('#DisplayNumber').val(datas.Number);
+                                        $('#Published').attr("checked", datas.Published);
+                                        $('#IsActive').attr("checked", datas.IsActive);
+                                        $('#Pictureid').val(datas.PictureId);
+                                        $('.list-img-edit').empty().append('<div class="col-md-3 margin-t-10 del-picture-id"><span title="Xóa" class="del-picture text-danger" data-pictureid="' + datas.PictureId + '"><i class="fa fa-trash-o"></i></span><img width="100%" class="img-picture" height="150" src="' + datas.UrlImage + '" /></div>')
+                                    }
+                                    else MsgDanger('Thông báo', 'Lỗi cập nhật tin', 3000);
+                                },
+                                failure: function (message) {
+                                    MsgDanger('Thông báo', 'Lỗi cập nhật tin', 3000);
+                                    console.log("Error:" + message);
+                                }
+                            });
+                        });
+                        $(document).on('click', '.delete-customer-work', function () {
+                            var postData = { Id: $('.data-modal-customerwork').data('id') };
+                            addAntiForgeryToken(postData);
+                            $.ajax({
+                                cache: false,
+                                type: 'POST',
+                                url: '/Admin/Supplier/DeleteSupplier',
+                                data: postData,
+                                dataType: 'json',
+                                success: function (datas) {
+                                    if (datas > 0) {
+                                        MsgSuccess('Thông báo', 'Thao tác thành công', 3000);
+                                        $('#customerwork-delete-confirmation').modal("hide");
+                                        $('#search-customerwork').click();
+                                    }
+                                    else MsgDanger('Thông báo', 'Lỗi cập nhật tin', 3000);
+                                },
+                                failure: function (message) {
+                                    MsgDanger('Thông báo', 'Lỗi cập nhật tin', 3000);
+                                    console.log("Error:" + message);
+                                }
+                            });
+                        });
+                        $(document).on('click', ".delete-customer", function () {
+                            $('#customerwork-delete-confirmation').modal("show");
+                            $('.data-modal-customerwork').attr('data-id', $(this).data('id'));
+                        });
+                        $(document).on('click', ".del-picture-id", function () {
+                            $('.list-img-edit').empty();
+                            $('#Url').val('');
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="customerwork-delete-confirmation" class="modal fade" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <span class="hidden data-modal-customerwork" data-id="0"></span>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Bạn có chắc không?</h4>
+            </div>
+            <div class="modal-body">
+                Bạn có chắc bạn muốn xóa mục này?
+            </div>
+            <div class="modal-footer">
+                <span class="btn btn-default" data-dismiss="modal">Không, Đóng</span>
+                <button type="button" class="btn btn-primary delete-customer-work pull-right">
+                    Xóa
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>

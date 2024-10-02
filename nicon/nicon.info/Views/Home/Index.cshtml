@@ -1,0 +1,98 @@
+﻿@{
+    Layout = "~/Views/Shared/_ColumnsOne.cshtml";
+
+    //page class
+    Html.AppendPageCssClassParts("html-home-page");
+}
+
+<div id="main-content">
+    <div id="content" class="region">
+        <div id="block-views-focus-home-slideshow-block-1" class="block block-views no-title odd first block-count-10 block-region-content block-focus-home-slideshow-block-1">
+            <div class="view view-focus-home-slideshow view-id-focus_home_slideshow view-display-id-block_1 view-dom-id-a893dbced3cf9488587e9bd7c522bd79">
+                <div class="view-content">
+                    @Html.Action("HomePicture", "Slideshow", new { positionpicture = 0 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="block-system-main" class="block block-system no-title even block-count-11 block-region-content block-main">
+        </div>
+        <div id="block-block-6" class="block block-block no-title odd block-count-12 block-region-content block-6">
+            <p><a class="scroll-top" href="http://www.nicon.vn/en" style="opacity: 0; display: none;"></a></p>
+        </div>
+        <div id="block-views-bloc-contenu-hp-block" class="block block-views no-title even last block-count-13 block-region-content block-bloc-contenu-hp-block">
+            <div class="view view-bloc-contenu-hp view-id-bloc_contenu_hp view-display-id-block view-dom-id-6a41411d2b1e40cc78d898af08607f2d">
+
+                <div class="view-content">
+                    <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+                        <article id="node-7992" class="node node-page-accueil node-promoted article odd node-lang-en node-full clearfix" about="/en/page-accueil/page-accueil-uk" typeof="sioc:Item foaf:Document" role="article">
+                            <header class="node-header">
+                                <h1 class="node-title" rel="nofollow">
+                                    <a href="http://www.nicon.vn/en/page-accueil/page-accueil-uk" rel="bookmark">Page accueil UK</a>
+                                </h1>
+                            </header>
+                            <div class="node-content">
+                                <span class="print-link"></span>
+                                <br />
+                                @Html.Action("HomepageProjectsUnderConstructions", "ProjectsUnderConstruction")
+                                <div class="block block-bouygues-newsroom contextual-links-region no-title even block-count-12 block-region-content block-b-newsroom-home" id="block-bouygues-newsroom-b-newsroom-home">
+                                    <div class="b-newsroom-content">
+                                        <div class="bas-reseau">
+                                            <div class="left-res">
+                                                <span>
+                                                    Follow us
+                                                </span>
+                                                <ul>
+                                                    @Html.Action("Social", "Common")
+                                                    <li class="iconMOri"><a onclick="window.open('http://www.mori-nicon.com/')" target="_blank"></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @Html.Action("HomepageConstructions", "Construction")
+								
+                                @Html.Action("HomepageActivities", "Activities")
+                                <br />
+                                @Html.Action("HomePicture", "Slideshow", new { positionpicture = 2 })
+                                @Html.Action("HomePicture", "Slideshow", new { positionpicture = 1 })
+                                <div class="field field-name-field-bloc-carri-res field-type-text-with-summary field-label-hidden view-mode-full">
+                                    <div class="field-items">
+                                        <div class="field-item even" >
+                                            <div class="career">
+                                                <h2><strong>@T("our.motto")    :</strong></h2>
+                                                <p>@T("clients.are.treated.as.our.asets")</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @Html.Action("HomePicture", "Slideshow", new { positionpicture = 3 })
+                            </div>
+                            <span property="dc:title" content="Page accueil UK" class="rdf-meta element-hidden"></span><span property="sioc:num_replies" content="0" datatype="xsd:integer" class="rdf-meta element-hidden"></span>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

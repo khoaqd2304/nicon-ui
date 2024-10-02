@@ -1,0 +1,62 @@
+﻿
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    img {
+        width: 70%;
+        height: auto;
+    }
+
+    table td {
+        width: 80%;
+    }
+</style>
+
+<div class="content" style="font-size:18px;">
+    <h2>Quy trình mua hàng, đánh giá nhà cung ứng, thầu phụ- co chinh sua</h2>
+    <div class="form-horizontal">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a class="showhideTable">Quy trình mua hàng, đánh giá nhà cung ứng, thầu phụ- có chỉnh sửa</a>
+                    <div class="showhide">
+                        <div class="panel panel-default">
+                            <img src="~/Themes/Nicon/Content/file/qtmhdg0004.jpg" alt="Quy trình mua hàng, đánh giá nhà cung ứng, thầu phụ- có chỉnh sửa">
+                            <img src="~/Themes/Nicon/Content/file/qtmhdg0005.jpg" alt="Quy trình mua hàng, đánh giá nhà cung ứng, thầu phụ- có chỉnh sửa">
+                            <img src="~/Themes/Nicon/Content/file/qtmhdg0006.jpg" alt="Quy trình mua hàng, đánh giá nhà cung ứng, thầu phụ- có chỉnh sửa">
+                            <img src="~/Themes/Nicon/Content/file/qtmhdg0007.jpg" alt="Quy trình mua hàng, đánh giá nhà cung ứng, thầu phụ- có chỉnh sửa">
+                            <img src="~/Themes/Nicon/Content/file/qtmhdg0008.jpg" alt="Quy trình mua hàng, đánh giá nhà cung ứng, thầu phụ- có chỉnh sửa">
+                        </div>
+                        @{
+                            Html.RenderAction("MHDGNCU", "MHDGNCUProcess");
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('.showhideTable').click(function () {
+        if (this.nextElementSibling.style.display === "none") {
+            this.nextElementSibling.style.display = "block";
+        } else {
+            this.nextElementSibling.style.display = "none";
+        }
+    });
+</script>
+

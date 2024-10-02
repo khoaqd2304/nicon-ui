@@ -1,0 +1,43 @@
+﻿@using Nop.Core.Domain.Maps
+@model Map
+@{
+    //page title
+    ViewBag.Title = T("Admin.ContentManagement.Maps.Location").Text;
+    //active menu item (system name)
+    Html.SetActiveMenuItemSystemName("Maps");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9hGN_DsVhowcp-X2Kc_wsi7KbQcVoq0Y&libraries=places&sensor=false"></script>
+
+    @Html.AntiForgeryToken()
+    <div class="content-header clearfix">
+        <h1 class="pull-left">
+            @T("Admin.Common.Addnew.Location")
+        </h1>
+        <div class="pull-right">
+            <button type="button" name="save" class="btn bg-blue save-maps-location">
+                <i class="fa fa-floppy-o"></i>
+                @T("Admin.Common.Save")
+            </button>
+        </div>
+    </div>
+    @Html.Partial("_CreateOrUpdate", Model)
+
+<script src="~/Administration/Scripts/google-maps.min.js?1510"></script>

@@ -1,0 +1,145 @@
+﻿@model TimeLineModel
+@using Nop.Web.Models.TimeLine;
+@{
+    /**/
+
+    Layout = "~/Views/Shared/_ColumnsTwo.cshtml";
+    Html.AppendPageCssClassParts("html-news-item-page");
+}
+
+<div id="breadcrumb" class="clearfix">
+    <nav class="breadcrumb-wrapper clearfix">
+        <ol id="crumbs" class="clearfix">
+            <li class="crumb crumb-first">
+                <a>@T("homepage")</a>
+            </li>
+            <li class="crumb">
+                <span> >> </span>
+                <span class="crumb-title">
+                    @T("home.menu.activitieshistory")
+                </span>
+            </li>
+
+        </ol>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+@if (Model != null)
+{
+        <div class="page news-item-page">
+            <div class="page-title">
+                <h1>@Model.Title</h1>
+            </div>
+            <div class="page-body">
+                <div class="news-body">
+                    @Html.Raw(Model.Short)
+                    <div class="field-collection-container clearfix">
+                        <div class="flexslider fc-diapo" id="slider">
+                            <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                                <ul class="flex-direction-nav">
+                                    <li><a class="flex-prev" href="http://www.bouygues-construction.com/en/page-historique/65-years-build#">Previous</a></li>
+                                    <li><a class="flex-next" href="http://www.bouygues-construction.com/en/page-historique/65-years-build#">Next</a></li>
+                                </ul>
+                            </div>
+                            <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                                <ul class="slides" style="width: 4000%; transition-duration: 0s; transform: translate3d(-7659px, 0px, 0px);">
+                                   @if (Model.TimeLineItems != null && Model.TimeLineItems.Any())
+                                   {
+                                       foreach (var item in Model.TimeLineItems)
+                                       {
+                                            <li class="flex-active-slide"> @*clone aria-hidden="true"*@
+                                                <div class="illustration-item-wrapper">
+                                                    <div class="field field-name-field-diapo-historique-visuel field-type-image field-label-hidden view-mode-default"><div class="field-items"><figure class="clearfix field-item even"><img typeof="foaf:Image" class="image-style-886-429" src="@item.UrlPicture" width="886" height="429" alt="@item.Description" draggable="false"></figure></div></div>
+                                                    <div class="legend-box">
+                                                        <div class="field field-name-field-l-gende field-type-text-with-summary field-label-hidden view-mode-default">
+                                                            <div class="field-items">
+                                                                <div class="field-item even">
+                                                                    <p><strong>@item.Year: </strong>@item.Description</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                       }
+                                   }
+                                </ul>
+                            </div><ul class="flex-direction-nav"><li><a class="flex-prev" href="#">Previous</a></li><li><a class="flex-next" href="#">Next</a></li></ul>
+                        </div>
+                        <div id="carousel" class="flexslider fc-diapo">
+                            <div class="flex-viewport" style="overflow: hidden; position: relative;"></div>
+                            <ul class="flex-direction-nav">
+                                <li><a class="flex-prev flex-disabled" href="http://www.bouygues-construction.com/en/page-historique/65-years-build#" tabindex="-1">Previous</a></li>
+                                <li><a class="flex-next flex-disabled" href="http://www.bouygues-construction.com/en/page-historique/65-years-build#" tabindex="-1">Next</a></li>
+                            </ul>
+                            <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                                <ul class="slides" style="width: 3200%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+                                    @if (Model.TimeLineItems != null && Model.TimeLineItems.Any())
+                                    {
+                                        foreach (var item in Model.TimeLineItems)
+                                        {
+                                            <li><div class="field-name-field-ann-e">@item.Year</div></li>
+                                        }
+                                    }
+                                </ul>
+                            </div><ul class="flex-direction-nav"><li><a class="flex-prev flex-disabled" href="#" tabindex="-1">Previous</a></li><li><a class="flex-next flex-disabled" href="#" tabindex="-1">Next</a></li></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+else
+{
+    <div class="page news-item-page class-blank">
+        <p>@T("No.Content")</p>
+    </div>
+}
+<script src="~/Themes/Nicon/Content/js/jquery.flexslider-min.js"></script>
+<script>jQuery.extend(Drupal.settings, { "basePath": "\/", "pathPrefix": "en\/", "ajaxPageState": { "theme": "bouygues", "theme_token": "x4qBq6kQIQuAAexhLF7FWDUeTiQzKy68tNkuB20WNHA", "jquery_version": "1.7", "js": { "sites\/all\/modules\/eu-cookie-compliance\/js\/eu_cookie_compliance.js": 1, "sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/1.7\/jquery.min.js": 1, "misc\/jquery.once.js": 1, "misc\/drupal.js": 1, "misc\/ajax.js": 1, "sites\/all\/modules\/contrib\/jquery_update\/js\/jquery_update.js": 1, "sites\/all\/modules\/custom\/bouygues_main\/scripts\/media_mobile.js": 1, "sites\/all\/libraries\/colorbox\/jquery.colorbox-min.js": 1, "sites\/all\/themes\/bouygues\/js\/my_mobile.js": 1, "sites\/all\/modules\/contrib\/colorbox\/js\/colorbox.js": 1, "sites\/all\/modules\/contrib\/colorbox\/styles\/default\/colorbox_style.js": 1, "sites\/all\/modules\/contrib\/colorbox\/js\/colorbox_load.js": 1, "sites\/all\/modules\/contrib\/lightbox2\/js\/lightbox.js": 1, "sites\/all\/modules\/custom\/bouygues_main\/flexslider\/jquery.flexslider-min.js": 1, "0": 1, "1": 1, "misc\/progress.js": 1, "sites\/all\/modules\/contrib\/colorbox_node\/colorbox_node.js": 1, "sites\/all\/themes\/bouygues\/js\/scripts.js": 1, "sites\/all\/themes\/bouygues\/js\/jquery.uniform.min.js": 1, "sites\/all\/themes\/bouygues\/js\/jquery.nivo.slider.js": 1, "sites\/all\/themes\/bouygues\/js\/bouygues.js": 1, "sites\/all\/themes\/bouygues\/js\/jquery-bxslider\/jquery.bxslider.js": 1, "sites\/all\/themes\/bouygues\/js\/jquery-bxslider\/jquery.bxslider.css": 1 }, "css": { "modules\/system\/system.base.css": 1, "modules\/system\/system.menus.css": 1, "modules\/system\/system.messages.css": 1, "modules\/system\/system.theme.css": 1, "sites\/all\/modules\/contrib\/colorbox_node\/colorbox_node.css": 1, "modules\/comment\/comment.css": 1, "sites\/all\/modules\/contrib\/date\/date_api\/date.css": 1, "sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css": 1, "modules\/field\/theme\/field.css": 1, "modules\/node\/node.css": 1, "modules\/search\/search.css": 1, "modules\/user\/user.css": 1, "sites\/all\/modules\/contrib\/youtube\/css\/youtube.css": 1, "sites\/all\/modules\/contrib\/views\/css\/views.css": 1, "sites\/all\/modules\/contrib\/ckeditor\/css\/ckeditor.css": 1, "sites\/all\/modules\/contrib\/colorbox\/styles\/default\/colorbox_style.css": 1, "sites\/all\/modules\/contrib\/ctools\/css\/ctools.css": 1, "sites\/all\/modules\/contrib\/lightbox2\/css\/lightbox_alt.css": 1, "modules\/locale\/locale.css": 1, "0": 1, "sites\/all\/modules\/eu-cookie-compliance\/css\/eu_cookie_compliance.css": 1, "sites\/all\/modules\/custom\/bouygues_main\/flexslider\/flexslider.css": 1, "sites\/all\/modules\/contrib\/field_collection\/field_collection.theme.css": 1, "public:\/\/ctools\/css\/4bfe91521f8a55d5c09efd329d25039a.css": 1, "sites\/all\/themes\/adaptivetheme\/at_core\/css\/at.layout.css": 1, "sites\/all\/themes\/bouygues\/css\/ra.css": 1, "sites\/all\/themes\/bouygues\/css\/all.css": 1, "sites\/all\/themes\/bouygues\/css\/uniform.default.css": 1, "sites\/all\/themes\/bouygues\/css\/styles.css": 1, "sites\/all\/themes\/bouygues\/css\/contents.css": 1, "sites\/all\/themes\/bouygues\/css\/responsive.css": 1, "sites\/all\/themes\/bouygues\/css\/main2.css": 1, "sites\/all\/themes\/bouygues\/css\/filiale.css": 1 } }, "locale": { "close": "close" }, "lang": "en", "colorbox": { "opacity": "0.85", "current": "{current} of {total}", "previous": "\u00ab Prev", "next": "Next \u00bb", "close": "Close", "maxWidth": "98%", "maxHeight": "98%", "fixed": true, "mobiledetect": true, "mobiledevicewidth": "480px", "preloading": true, "arrowKey": false }, "lightbox2": { "rtl": "0", "file_path": "\/(\\w\\w\/)public:\/", "default_image": "\/sites\/all\/modules\/contrib\/lightbox2\/images\/brokenimage.jpg", "border_size": 10, "font_color": "000", "box_color": "fff", "top_position": "", "overlay_opacity": "0.8", "overlay_color": "000", "disable_close_click": 1, "resize_sequence": 0, "resize_speed": 100, "fade_in_speed": 0, "slide_down_speed": 100, "use_alt_layout": 1, "disable_resize": 0, "disable_zoom": 0, "force_show_nav": 1, "show_caption": 0, "loop_items": 1, "node_link_text": "View Image Details", "node_link_target": 0, "image_count": "Image !current of !total", "video_count": "Video !current of !total", "page_count": "!current\/!total", "lite_press_x_close": "press \u003Ca href=\u0022#\u0022 onclick=\u0022hideLightbox(); return FALSE;\u0022\u003E\u003Ckbd\u003Ex\u003C\/kbd\u003E\u003C\/a\u003E to close", "download_link_text": "", "enable_login": false, "enable_contact": false, "keys_close": "c x 27", "keys_previous": "p 37", "keys_next": "n 39", "keys_zoom": "z", "keys_play_pause": "32", "display_image_size": "original", "image_node_sizes": "()", "trigger_lightbox_classes": "", "trigger_lightbox_group_classes": "", "trigger_slideshow_classes": "", "trigger_lightframe_classes": "", "trigger_lightframe_group_classes": "", "custom_class_handler": 0, "custom_trigger_classes": "", "disable_for_gallery_lists": true, "disable_for_acidfree_gallery_lists": true, "enable_acidfree_videos": true, "slideshow_interval": 5000, "slideshow_automatic_start": true, "slideshow_automatic_exit": true, "show_play_pause": true, "pause_on_next_click": false, "pause_on_previous_click": true, "loop_slides": false, "iframe_width": 600, "iframe_height": 400, "iframe_border": 0, "enable_video": 0 }, "urlIsAjaxTrusted": { "\/en\/page-historique\/65-years-build": true, "\/en\/search\/node": true }, "eu_cookie_compliance": { "popup_enabled": 1, "popup_agreed_enabled": 0, "popup_hide_agreed": 0, "popup_clicking_confirmation": 1, "popup_html_info": "\u003Cdiv\u003E\n  \u003Cdiv class =\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Cp\u003EWe use cookies on this website to store information on your computer or mobile device to enhance your online experience and for statistical purposes.\n\u003C\/p\u003E\u003Cp\u003EIf you continue to use this website, you are consenting to the use of cookies. For more information and to configure your cookies, \u003Ca href=\u0022\/en\/basic-page\/legal-information\u0022 target=\u0022_blank\u0022\u003Eclick here\u003C\/a\u003E.\u003C\/p\u003E\n    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022agree-button\u0022\u003EOK, I agree\u003C\/button\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button\u0022\u003ENo, give me more info\u003C\/button\u003E\n    \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E\n", "popup_html_agreed": "\u003Cdiv\u003E\n  \u003Cdiv class =\u0022popup-content agreed\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Cp\u003Esss\u003C\/p\u003E\n    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022hide-popup-button\u0022\u003EHide\u003C\/button\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button\u0022 \u003EMore info\u003C\/button\u003E\n    \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E", "popup_height": "auto", "popup_width": "100%", "popup_delay": 1000, "popup_link": "\/en\/basic-page\/legal-information", "popup_link_new_window": 1, "popup_position": 1, "popup_language": "en", "domain": "" }, "flexSliderSettings": { "animation": "slide", "pauseOnAction": false, "pauseOnHover": true, "animationLoop": true, "animationSpeed": 600, "animationDuration": 0, "slideToStart": 0, "controlNav": false, "slideshowSpeed": 60000, "pausePlay": false, "sync": "#carousel" } });</script>
+<script>
+    (function ($) {
+        Drupal.behaviors.bFlexSlider = {
+            attach: function (context, settings) {
+                settings.flexSliderSettings.start = function (slider) { $("body").removeClass("loading"); };
+                $(window).load(function () {
+                    $(".flexslider").flexslider(Drupal.settings.flexSliderSettings);
+                })
+            }
+        }
+    })(jQuery);</script>
+<script>
+    (function ($) {
+
+        $(window).load(function () {
+            $("#carousel").flexslider({
+                animation: "slide",
+                controlNav: false,
+                animationLoop: true,
+                slideshow: true,
+                itemWidth: 55,
+                itemMargin: 25,
+                asNavFor: "#slider",
+                minItems: 20, // use function to pull in initial value
+                maxItems: 20, // use function to pull in initial value
+            });
+        })
+
+    })(jQuery);</script>

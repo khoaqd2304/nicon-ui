@@ -1,0 +1,124 @@
+﻿@model PagedList.IPagedList<Nop.Web.Models.News.NewsModel>
+@using PagedList.Mvc;
+<div id="breadcrumb" class="clearfix">
+    <nav class="breadcrumb-wrapper clearfix">
+        <ol id="crumbs" class="clearfix">
+            <li class="crumb crumb-first">
+                <a>@T("homepage")</a>
+            </li>
+            <li class="crumb">
+                <span> >> </span>
+                <span class="crumb-title">
+                    @T("home.menu.news")
+                </span>
+            </li>
+
+        </ol>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<br />
+<div id="columns" class="columns clearfix">
+    <div id="content-column" class="content-column">
+        <div class="content-inner">
+            <div id="main-content">
+                <header id="main-content-header" class="clearfix">
+                    <h1 id="page-title">
+                        <span>@T("home.menu.news")</span>
+                    </h1>
+                </header>
+                <div id="content" class="region">
+                    <div id="block-system-main">
+                        <div class="view-content">
+                            @if (Model != null && Model.Any())
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <div class="views-row views-row-1 views-row-odd views-row-first">
+                                        <div class="views-field views-field-nothing">
+                                            <span class="field-content">
+                                                <div class="date">
+                                                    @item.CreateDate.ToString("dd/MM/yyyy")
+                                                </div>
+                                                <div class="titre">
+                                                    <a  href="@Url.RouteUrl("NewsItem", new { SeName = item.SeName })"> @item.Title  </a>
+                                                </div>
+                                                <div class="contenu">
+                                                    <div class="vignette">
+                                                        <a  href="@Url.RouteUrl("NewsItem", new { SeName = item.SeName })">
+                                                            <img class="image-style-style-cp-dp" src="@item.ImageUrl" width="324" height="157">
+                                                        </a>
+                                                    </div>
+                                                    <div class="content-text" style="padding:8px 16px">
+                                                        @Html.Raw(@item.Short)
+														 <div class="lien">
+                                                        <a href="@Url.RouteUrl("NewsItem", new { SeName = item.SeName })">
+                                                            Chi tiết
+                                                        </a>
+                                                    </div>
+                                                    </div>
+                                                   
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+
+                                <div class="page news-item-page class-blank">
+                                    <p>@T("No.Content")</p>
+                                </div>
+                            }
+                            <div class="item-list">
+                                @Html.PagedListPager(Model, page => Url.Action("News", new { page }))
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*
+<div class="lien-savoir communique_presse">
+    <h2>
+        Find out
+        <span>more</span>
+    </h2>
+    <div class="link">
+
+        <a>
+
+            <span> Consult our media library</span>
+        </a>
+
+    </div>
+    <div class="mail-link">
+        <a>Receive our communique by e-mail</a>
+    </div>
+</div>
+*@
+
+
+
+

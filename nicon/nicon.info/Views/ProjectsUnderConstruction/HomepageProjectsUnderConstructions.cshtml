@@ -1,0 +1,356 @@
+@model HomePagePUCItemsModel
+@using Nop.Web.Models.ProjectsUnderConstructions
+@{
+    int index = 0;
+}
+@if (Model.ProjectsUnderConstructionsItems.Count > 0)
+{
+    <div class="home-page-construction">
+        <!-- update 08/10/20024 -->
+
+        <div id="construction-tab"><span>@T("tab.homepage.ongoingproject")</span></div>
+        <!--end update 08/10/20024 -->
+        <div id="projectOnGoing">
+            @if (ViewBag.CheckIsMobile)
+            {
+            //foreach (var item in Model.ProjectsUnderConstructionsItems)
+                //{
+                <script>
+                    fetch('/projectsongoing')
+                        .then(response => response.text())
+                        .then(html => {
+                            const parser = new DOMParser();
+                            const doc = parser.parseFromString(html, 'text/html');
+                            const products = doc.querySelectorAll('.product');
+                            htmlText = "";
+
+                            products.forEach((product, index) => {
+                                // Lấy thông tin sản phẩm
+                                const title = product.querySelector('.metropole').innerText;
+                                const short = product.querySelector('.subtitle').innerHTML;
+                                const imageUrl = product.querySelector('.product-image').getAttribute('src');
+                                const href = product.querySelector('.metropole').getAttribute('href');
+
+                                if (index < 4) {
+                                    htmlText += `   <div class="field field-name-field-bloc-carri-res field-type-text-with-summary field-label-hidden view-mode-full">
+                                                    <div class="field-items">
+                                                        <div class="field-item even">
+                                                            <p>
+                                                                <a href="${href}">
+                                                                    <img href="${href}" alt="${title}" src="${imageUrl}" style="width: 100%; height: 243px;">
+                                                                </a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="field field-name-field-bloc-dp-texte field-type-text-with-summary field-label-hidden view-mode-full">
+                                                    <div class="field-items">
+                                                        <div class="field-item even">
+                                                            <div class="publication publication-mobile" style="cursor: pointer;" onclick="window.location='${href}';">
+                                                                <h2><strong>${title}</strong></h2>
+                                                                ${short}
+                                                                <p><a class="mon-lien-plus" href="${href}">@T("homepage.detail")</a></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>`
+                                }
+
+
+                            });
+
+                            document.querySelector('#projectOnGoing').innerHTML = htmlText;
+
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                </script>
+                //if (index == 0 || index == 2)
+                //{
+
+
+                //}
+                @*else if (index == 1 || index == 3)
+        {
+        <div class="field field-name-field-bloc-carri-res field-type-text-with-summary field-label-hidden
+        view-mode-full">
+        <div class="field-items">
+        <div class="field-item even">
+        <p>
+        <a href="@Url.RouteUrl("ProjectsUnderConstructionItem", new { SeName = item.SeName })">
+        <img href="@Url.RouteUrl("ProjectsUnderConstructionItem", new { SeName = item.SeName })" alt="@item.Title"
+        src="@item.ImageUrl" style="width: 100%; height: 243px;">
+        </a>
+        </p>
+        </div>
+        </div>
+        </div>
+        <div class="field field-name-field-bloc-dp-texte field-type-text-with-summary field-label-hidden
+        view-mode-full">
+        <div class="field-items">
+        <div class="field-item even">
+        <div class="publication-2-1 publication-mobile" style="cursor: pointer;"
+        onclick="window.location='@Url.RouteUrl("ProjectsUnderConstructionItem", new { SeName = item.SeName })';">
+        <h2><strong>@item.Title</strong></h2>
+        @Html.Raw(@item.Short)
+        <p><a class="mon-lien-plus" href="@Url.RouteUrl("ProjectsUnderConstructionItem", new { SeName = item.SeName
+        })">@T("homepage.detail")</a></p>
+        </div>
+        </div>
+        </div>
+        </div>
+
+        }
+        index++;*@
+                //}
+            }
+            else
+            {
+                <!--On Going Project -->
+                @*foreach (var item in Model.ProjectsUnderConstructionsItems.OrderByDescending(x => x.DisplayOrder))
+        {
+        if (index == 0 || index == 2)
+        {
+        <div class="field field-name-field-bloc-dp-texte field-type-text-with-summary field-label-hidden
+        view-mode-full">
+        <div class="field-items">
+        <div class="field-item even">
+        <div class="publication" style="cursor: pointer;"
+        onclick="window.location='@Url.RouteUrl("ProjectsUnderConstructionItem", new { SeName = item.SeName })';">
+        <h2><strong>@item.Title</strong></h2>
+        @Html.Raw(@item.Short)
+        <p><a class="mon-lien-plus" href="@Url.RouteUrl("ProjectsUnderConstructionItem", new { SeName = item.SeName
+        })">@T("homepage.detail")</a></p>
+        </div>
+        </div>
+        </div>
+        </div>
+        <div class="field field-name-field-bloc-carri-res field-type-text-with-summary field-label-hidden
+        view-mode-full">
+        <div class="field-items">
+        <div class="field-item even">
+        <p>
+        <a href="@Url.RouteUrl("ProjectsUnderConstructionItem", new { SeName = item.SeName })">
+        <img href="@Url.RouteUrl("ProjectsUnderConstructionItem", new { SeName = item.SeName })" alt="@item.Title"
+        src="@item.ImageUrl" style="width: 100%; height: 243px;">
+        </a>
+        </p>
+
+        </div>
+        </div>
+        </div>
+        }
+        if (index == 1)
+        {
+        <div class="field field-name-field-bloc-dp-texte field-type-text-with-summary field-label-hidden
+        view-mode-full">
+        <div class="field-items">
+        <div class="field-item even">
+        <div class="image">
+        <div class="field field-name-field-vignette-dd field-type-image field-label-hidden view-mode-full">
+        <div class="field-items">
+        <p>
+        <a href="@Url.RouteUrl("ProjectsUnderConstructionItem", new { SeName = item.SeName })">
+        <img typeof="foaf:Image" class="image-center" src="@item.ImageUrl" style="width: 100%; height: 243px;"
+        alt="@item.Title">
+        </a>
+        </p>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <div class="field field-name-field-bloc-carri-res field-type-text-with-summary field-label-hidden
+        view-mode-full">
+        <div class="field-item">
+        <div class="publication-2-1" style="cursor: pointer;"
+        onclick="window.location='@Url.RouteUrl("ProjectsUnderConstructionItem", new { SeName = item.SeName })';">
+        <h2><strong>@item.Title</strong></h2>
+        @Html.Raw(@item.Short)
+        <p><a class="mon-lien-plus" href="@Url.RouteUrl("ProjectsUnderConstructionItem", new { SeName = item.SeName
+        })">@T("homepage.detail")</a></p>
+        </div>
+        </div>
+        </div>
+
+        }
+        if (index == 3)
+        {
+        <div class="field field-name-field-bloc-dp-texte field-type-text-with-summary field-label-hidden
+        view-mode-full">
+        <div class="field-items">
+        <div class="field-item even">
+        <div class="image">
+        <div class="field field-name-field-vignette-dd field-type-image field-label-hidden view-mode-full">
+        <div class="field-items">
+        <p>
+        <a href="@Url.RouteUrl("ProjectsUnderConstructionItem", new { SeName = item.SeName })">
+        <img typeof="foaf:Image" class="image-center" src="@item.ImageUrl" style="width: 100%; height: 243px;"
+        alt="@item.Title">
+        </a>
+        </p>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <div class="field field-name-field-bloc-carri-res field-type-text-with-summary field-label-hidden
+        view-mode-full">
+        <div class="field-item">
+        <div class="publication-1-2" style="cursor: pointer;"
+        onclick="window.location='@Url.RouteUrl("ProjectsUnderConstructionItem", new { SeName = item.SeName })';">
+        <h2><strong>@item.Title</strong></h2>
+        @Html.Raw(@item.Short)
+        <p><a class="mon-lien-plus" href="@Url.RouteUrl("ProjectsUnderConstructionItem", new { SeName = item.SeName
+        })">@T("homepage.detail")</a></p>
+        </div>
+        </div>
+        </div>
+        }
+        index++;
+        }*@
+                @*get project on going in page and render*@
+                <script>
+                    fetch('/projectsongoing')
+                        .then(response => response.text())
+                        .then(html => {
+                            const parser = new DOMParser();
+                            const doc = parser.parseFromString(html, 'text/html');
+                            const products = doc.querySelectorAll('.product');
+                            htmlText = "";
+
+                            products.forEach((product, index) => {
+                                // Lấy thông tin sản phẩm
+                                const title = product.querySelector('.metropole').innerText;
+                                const short = product.querySelector('.subtitle').innerHTML;
+                                const imageUrl = product.querySelector('.product-image').getAttribute('src');
+                                const href = product.querySelector('.metropole').getAttribute('href');
+
+
+                                if (index === 0 || index === 2) {
+                                    htmlText += `
+                                                            <div class="field field-name-field-bloc-dp-texte field-type-text-with-summary field-label-hidden view-mode-full">
+                                                                <div class="field-items">
+                                                                    <div class="field-item even">
+                                                                        <div class="publication" style="cursor: pointer;" onclick="window.location='${href}';">
+                                                                            <h2><strong>${title}</strong></h2>
+                                                                            ${short}
+                                                                            <p><a class="mon-lien-plus" href="${href}">@T("homepage.detail")</a></p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="field field-name-field-bloc-carri-res field-type-text-with-summary field-label-hidden view-mode-full">
+                                                                <div class="field-item">
+                                                                    <div class="field-item even">
+                                                                        <p>
+                                                                            <a href="${href}">
+                                                                                <img src="${imageUrl}" alt="${title}" style="width: 100%; height: 243px;">
+                                                                            </a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        `;
+                                } else if (index === 1) {
+                                    htmlText += `
+                                             <div class="field field-name-field-bloc-dp-texte field-type-text-with-summary field-label-hidden
+                view-mode-full">
+                <div class="field-items">
+                <div class="field-item even">
+                <div class="image">
+                <div class="field field-name-field-vignette-dd field-type-image field-label-hidden view-mode-full">
+                <div class="field-items">
+                <p>
+                <a href="${href}">
+                <img typeof="foaf:Image" class="image-center" src="${imageUrl}" style="width: 100%; height: 243px;"
+                alt="${title}">
+                </a>
+                </p>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                <div class="field field-name-field-bloc-carri-res field-type-text-with-summary field-label-hidden
+                view-mode-full">
+                <div class="field-item">
+                <div class="publication-1-2" style="cursor: pointer;"
+                onclick="window.location='${href}">
+                <h2><strong>${title}</strong></h2>
+                ${short}
+                <p><a class="mon-lien-plus" href="${href}">@T("homepage.detail")</a></p>
+                </div>
+                </div>
+                </div>
+
+                                                        `;
+                                }
+                                else if (index === 3) {
+                                    htmlText += `
+          <div class="field field-name-field-bloc-dp-texte field-type-text-with-summary field-label-hidden
+                                view-mode-full">
+                                <div class="field-items">
+                                <div class="field-item even">
+                                <div class="image">
+                                <div class="field field-name-field-vignette-dd field-type-image field-label-hidden view-mode-full">
+                                <div class="field-items">
+                                <p>
+                                <a href="${href}", new { SeName = item.SeName })">
+                                <img typeof="foaf:Image" class="image-center" src="${imageUrl}" style="width: 100%; height: 243px;"
+                                alt="${title}">
+                                </a>
+                                </p>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                <div class="field field-name-field-bloc-carri-res field-type-text-with-summary field-label-hidden
+                                view-mode-full">
+                                <div class="field-item">
+                                <div class="publication-2-1" style="cursor: pointer;"
+                                onclick="window.location='${href}';">
+                                <h2><strong>${title}</strong></h2>
+                                    ${short}
+                                <p><a class="mon-lien-plus" href="${href}">@T("homepage.detail")</a></p>
+                                </div>
+                                </div>
+                                </div>
+                `
+                                }
+
+                            });
+                            console.log(htmlText)
+                            document.querySelector('#projectOnGoing').innerHTML = htmlText;
+
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                </script>
+            }
+        </div>
+        <!--update 08/10/20024 -->
+        <div class="field field-name-field-bloc-dp-texte field-type-text-with-summary field-label-hidden view-mode-full"
+            style="width:100%">
+            <div class="field-items">
+                <div class="field-item even">
+                    <a href="/projectsongoing" style="color:#ed1c24;float:right">@T("seemore") <span><svg
+                                xmlns="http://www.w3.org/2000/svg" width="18" height="12" fill="currentColor"
+                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+                            </svg></span></a>
+                </div>
+            </div>
+        </div>
+        <!--end update 08/10/20024 -->
+    </div>
+
+}

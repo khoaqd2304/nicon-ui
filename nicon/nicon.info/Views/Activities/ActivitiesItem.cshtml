@@ -1,0 +1,45 @@
+﻿@model Nop.Web.Models.Activities.ActivitiesModel
+@{
+    //title
+    Html.AddTitleParts(!String.IsNullOrEmpty(Model.MetaTitle) ? Model.MetaTitle : Model.Title);
+    //meta
+    Html.AddMetaDescriptionParts(Model.MetaDescription);
+    Html.AddMetaKeywordParts(Model.MetaKeywords);
+}
+@if (Model != null)
+{
+    <div class="page news-item-page">
+        <div class="page-title">
+            <h1>@Model.Title</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        <div class="page-body">
+            <div class="news-date">
+                @Model.CreateDate.ToString("D")
+            </div>
+            <div class="news-body activities">
+                @Html.Raw(Model.Full)
+            </div>
+        </div>
+    </div>
+}
+
+
+

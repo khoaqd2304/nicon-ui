@@ -1,0 +1,21 @@
+﻿@model Nop.Web.Models.Common.SocialModel
+    @if (!string.IsNullOrEmpty(Model.FacebookLink))
+    {
+        <li class="Fb"><a href="@Model.FacebookLink" target="_blank"></a></li>
+    }
+    @if (!string.IsNullOrEmpty(Model.GooglePlusLink))
+    {
+        <li class="Google"><a href="@Model.GooglePlusLink" target="_blank"></a></li>
+    }
+    @if (!string.IsNullOrEmpty(Model.YoutubeLink))
+    {
+        <li class="YouTube"><a href="@Model.YoutubeLink" target="_blank"></a></li>
+    }
+
+
+
+
+
+
+
+

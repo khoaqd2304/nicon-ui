@@ -1,0 +1,122 @@
+﻿@model Nop.Web.Models.Activities.HomePageActivitiesItemsModel
+@{
+    int index = 0;
+}
+<div class="home-page-activities">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="activities-tab"><span>@T("tab.homepage.activities")</span></div>
+    @if (ViewBag.CheckIsMobile)
+    {
+        foreach (var item in Model.ActivitiesItems)
+        {
+                <div class="field field-name-field-bloc-dp-texte field-type-text-with-summary field-label-hidden view-mode-full">
+                    <div class="field-items">
+                        <div class="field-item even">
+                            <div class="image">
+                                <div class="field field-name-field-vignette-dd field-type-image field-label-hidden view-mode-full">
+                                    <div class="field-items">
+                                        <p>
+                                            <a href="@Url.RouteUrl("ActivitiesItem", new { SeName = item.SeName })">
+                                                <img typeof="foaf:Image" class="image-center" src="@item.ImageUrl" style="width: 100%; height: 243px;" alt="@item.Title">
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field field-name-field-bloc-carri-res field-type-text-with-summary field-label-hidden view-mode-full">
+                    <div class="field-items">
+                        <div class="publication publication-mobile activities" style="cursor: pointer;" onclick="window.location='@Url.RouteUrl("ActivitiesItem", new { SeName = item.SeName })';">
+                            <h2><strong>@item.Title</strong></h2>
+                            @Html.Raw(@item.Short)
+                            <p class="link-detail"><a class="mon-lien-plus" href="@Url.RouteUrl("ActivitiesItem", new { SeName = item.SeName })">@T("homepage.detail")</a></p>
+                        </div>
+                    </div>
+
+                </div>
+        }
+    }
+    else
+    {
+        foreach (var item in Model.ActivitiesItems)
+        {
+            if (index == 0)
+            {
+                <div class="field field-name-field-bloc-dp-texte field-type-text-with-summary field-label-hidden view-mode-full">
+                    <div class="field-items">
+                        <div class="field-item even">
+                            <div class="image">
+                                <div class="field field-name-field-vignette-dd field-type-image field-label-hidden view-mode-full">
+                                    <div class="field-items">
+                                        <p>
+                                            <a href="@Url.RouteUrl("ActivitiesItem", new { SeName = item.SeName })">
+                                                <img typeof="foaf:Image" class="image-center" src="@item.ImageUrl" style="width: 100%; height: 243px;" alt="@item.Title">
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field field-name-field-bloc-carri-res field-type-text-with-summary field-label-hidden view-mode-full">
+                    <div class="field-items">
+                        <div class="publication-1-2 activities" style="cursor: pointer;" onclick="window.location='@Url.RouteUrl("ActivitiesItem", new { SeName = item.SeName })';">
+                            <h2><strong>@item.Title</strong></h2>
+                            @Html.Raw(@item.Short)
+                            <p class="link-detail"><a class="mon-lien-plus" href="@Url.RouteUrl("ActivitiesItem", new { SeName = item.SeName })">@T("homepage.detail")</a></p>
+                        </div>
+                    </div>
+
+                </div>
+            }
+            else
+            {
+                <div class="field field-name-field-bloc-dp-texte field-type-text-with-summary field-label-hidden view-mode-full">
+                    <div class="field-items">
+                        <div class="field-item even">
+                            <div class="publication activities" style="cursor: pointer;" onclick="window.location='@Url.RouteUrl("ActivitiesItem", new { SeName = item.SeName })';">
+                                <h2><strong>@item.Title</strong></h2>
+                                @Html.Raw(@item.Short)
+                                <p><a class="mon-lien-plus" href="@Url.RouteUrl("ActivitiesItem", new { SeName = item.SeName })">@T("homepage.detail")</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field field-name-field-bloc-carri-res field-type-text-with-summary field-label-hidden view-mode-full">
+                    <div class="field-items">
+                        <div class="field-item even">
+                            <p>
+                                <a href="@Url.RouteUrl("ActivitiesItem", new { SeName = item.SeName })">
+                                    <img href="@Url.RouteUrl("ActivitiesItem", new { SeName = item.SeName })" alt="@item.Title" src="@item.ImageUrl" style="width: 100%; height: 243px;">
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+            index++;
+        }
+    }
+</div>
+
+

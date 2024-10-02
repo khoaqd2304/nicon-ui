@@ -1,0 +1,85 @@
+﻿@using Nop.Admin.Models.Activities
+@model ActivitiesModel
+@{
+    //page title
+    ViewBag.Title = T("Admin.ContentManagement.Works.EditWorksItemDetails").Text;
+    //active menu item (system name)
+    Html.SetActiveMenuItemSystemName("Works");
+}
+
+@using (Html.BeginForm("Edit", "Activities", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+            @Html.AntiForgeryToken()
+            <div class="content-header clearfix">
+        <h1 class="pull-left">
+            @T("Admin.ContentManagement.Works.EditWorksItemDetails") - @Model.Title
+            <small><i class="fa fa-arrow-circle-left"></i>@Html.ActionLink(T("Admin.ContentManagement.Works.BackToList").Text, "Index")</small>
+        </h1>
+        <div class="pull-right">
+            <button type="submit" name="save" class="btn bg-blue">
+                <i class="fa fa-floppy-o"></i>
+                @T("Admin.Common.Save")
+            </button>
+            <button type="submit" name="save-continue" class="btn bg-blue">
+                <i class="fa fa-floppy-o"></i>
+                @T("Admin.Common.SaveContinue")
+            </button>
+            <span id="delete-works-modal" class="btn bg-red">
+                <i class="fa fa-trash-o"></i>
+                @T("Admin.Common.Delete")
+            </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+    @Html.Partial("_CreateOrUpdate", Model)
+}
+
+@Html.Partial("_ConfirmationDelete")
+
+<script>
+    $(document).on('click', '.delete-work', function () {
+        var postData = { Id: $('#Id').val() };
+        addAntiForgeryToken(postData);
+        $.ajax({
+            cache: false,
+            type: 'POST',
+            url: '/Admin/Activities/DeleteActivities',
+            data: postData,
+            dataType: 'json',
+            success: function (datas) {
+                if (datas > 0) {
+                    MsgSuccess('Thông báo', 'Thao tác thành công', 3000);
+                    setTimeout(function () {
+                        window.location.href = "/Admin/Activities/Index"
+                    },1500)
+                }
+                else MsgDanger('Thông báo', 'Thao tác lỗi', 3000);
+            },
+            failure: function (message) {
+                MsgDanger('Thông báo', 'Thao tác lỗi', 3000);
+                console.log("Error:" + message);
+            }
+        });
+    });
+    $(document).on('click', "#delete-works-modal", function () {
+        $('#works-delete-confirmation').modal("show");
+        $('.data-modal-works').attr('data-id', $(this).data('id'));
+    });
+</script>
