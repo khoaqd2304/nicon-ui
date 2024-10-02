@@ -423,8 +423,8 @@
 }
 
 .primary-btn {
-    background-color: var(--primary-orange) !important;
-    color:black !important;
+  background-color: red;
+    color:white !important;
 }
 @media (min-width: 992px) {
     .d-lg-block {
